@@ -1,37 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  StatusBar,
+  TextInput,
+  Dimensions,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
-export default function Rota() {
+import styles from './styles'
+
+export default function NavBar() {
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Template <Text style={styles.name}>Cade o bar?</Text></Text>
-      <Text style={styles.description}>Bem Vindo(a) ao Login!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <StatusBar hidden={true} barStyle="light-content" />
+      <View style={styles.header}>
+          <ImageBackground source={require("../../assets/login/map_girl.svg")} style={styles.imageBackground}></ImageBackground>
+          <Image
+            style={styles.imageWave}
+            source={require('../../assets/login/beer.svg')}
+          />
+      </View>
+      <View style={styles.footer}>
+           
+            <View style={styles.action}>
+                <TextInput 
+                  placeholder="E-mail"
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+            </View>
+
+            <View style={styles.action}>
+                <TextInput 
+                  secureTextEntry
+                  placeholder="Senha"
+                  style={styles.textInput}
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                />
+            </View>
+            
+            <TouchableOpacity 
+            style={styles.animation}
+            >
+              <Text style={styles.textLogin}>Entrar</Text>
+            </TouchableOpacity>
+
+            <View style={styles.signUp}>
+                  <Text style={{color:'#fdf7fa'}}>Não possui conta?</Text>
+                  <Text style={{color:'#577590'}}> Registre-se</Text>
+            </View>
+      </View>
+  </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#37323e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    fontWeight: "bold",
-  },
-  name: {
-    color: '#f3ca40',
-    fontWeight: "bold",
-  },
-  description: {
-    top: 10,
-    color: '#BFBDC1',
-    fontWeight: '100',
-    width: 300,
-    textAlign: 'center'
-  },
-});

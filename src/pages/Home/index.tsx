@@ -1,14 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import NavBar from '../../components/Navigator/index'
 
 export default function Rota() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Template <Text style={styles.name}>Cade o bar?</Text></Text>
       <Text style={styles.description}>Bem Vindo(a) a Home!</Text>
-      <NavBar />
     </View>
   );
 }
