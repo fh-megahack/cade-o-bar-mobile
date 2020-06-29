@@ -4,7 +4,7 @@
 
 # Getting Started
 
-This project 
+#### This project was developed to run at Expo 
 
 ## Installation
 
