@@ -1,9 +1,10 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 
-import Rota from './src/index'
+import App from './src/index'
 
-export default function App() {
+export default function Main() {
   return (
-    <Rota />
+    <App />
   );
 }
