@@ -1,13 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+import NavBar from '../../components/Navigator/index'
 
 export default function Rota() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Template <Text style={styles.name}>Cade o bar?</Text></Text>
       <Text style={styles.description}>Bem Vindo(a) a Home!</Text>
-      <StatusBar style="auto" />
+      <NavBar />
     </View>
   );
 }
