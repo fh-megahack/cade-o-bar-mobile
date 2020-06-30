@@ -4,41 +4,38 @@ import { StyleSheet } from 'react-native'
     container: {
       flex:1,
       backgroundColor:'#fdf7fa',
-      justifyContent:'center',
     },
     header: {
-      flex:2,
+      flex:1,
     },
     footer: {
-      flex:1,
+      flex: 0.7,
       padding:25,
-      backgroundColor: '#F3CA40',
+      backgroundColor: '#f3ca40',
     },
     imageBackground:{
-      flex:1,
+      flex: 3,
       justifyContent:'center',
       alignItems:'center',
-      width:"100%",
+      width: 130,
       backgroundColor: '#fdf7fa',
     },
     imageWave:{
-      position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
       left: 0,
-      right: 0,
-      top: 145,
-      bottom: 0,
+      top: 300,
     },
     action: {
       flexDirection:'row',
       borderBottomWidth:1,
-      borderBottomColor:'#fff'
+      borderBottomColor:'#fff',
+      width: '90%',
+      alignItems: 'center',
     },
     textInput: {
-      flex:1,
-      marginTop:5,
-      paddingBottom:7,
+      marginTop:30,
+      paddingBottom:10,
       color:'#fff'
     },
     button_container: {
@@ -47,9 +44,9 @@ import { StyleSheet } from 'react-native'
     },
     animation: {
       backgroundColor:'#577590',
-      paddingVertical:10,
-      marginTop:30,
-      borderRadius:100,
+      paddingVertical:15,
+      marginTop:50,
+      borderRadius:10,
       justifyContent:'center',
       alignItems:'center',
     },
@@ -62,8 +59,5 @@ import { StyleSheet } from 'react-native'
       flexDirection:'row',
       justifyContent:'center',
       marginTop:60,
-    },
-    textSignUp: {
-      fontWeight:'bold',
     }
   });

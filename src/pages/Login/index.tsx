@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   View,
   Text,
@@ -10,6 +11,9 @@ import {
   Image,
 } from "react-native";
 
+// Icones
+import { AntDesign } from '@expo/vector-icons';
+
 import styles from './styles'
 
 export default function NavBar() {
@@ -18,36 +22,34 @@ export default function NavBar() {
     <View style={styles.container}>
     <StatusBar hidden={true} barStyle="light-content" />
       <View style={styles.header}>
-          <ImageBackground source={require("../../assets/login/map_girl.svg")} style={styles.imageBackground}></ImageBackground>
+          <ImageBackground source={require("../../assets/login/logo.png")} style={styles.imageBackground}></ImageBackground>
           <Image
             style={styles.imageWave}
-            source={require('../../assets/login/beer.svg')}
+            source={require('../../assets/login/beer.png')}
           />
       </View>
       <View style={styles.footer}>
-           
-            <View style={styles.action}>
-                <TextInput 
-                  placeholder="E-mail"
-                  style={styles.textInput}
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                />
-            </View>
-
-            <View style={styles.action}>
-                <TextInput 
-                  secureTextEntry
-                  placeholder="Senha"
-                  style={styles.textInput}
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                />
-            </View>
+              <View style={styles.action}>
+                  <TextInput 
+                    placeholder="E-mail"
+                    placeholderTextColor = "#fff"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                  />
+              </View>
+              <View style={styles.action}>
+                  <TextInput 
+                    secureTextEntry
+                    placeholder="Senha"
+                    placeholderTextColor = "#fff"
+                    style={styles.textInput}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                  />
+              </View>
             
-            <TouchableOpacity 
-            style={styles.animation}
-            >
+            <TouchableOpacity style={styles.animation}> 
               <Text style={styles.textLogin}>Entrar</Text>
             </TouchableOpacity>
 
