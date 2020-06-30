@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native'
     },
     header: {
       flex:1,
+      alignItems: 'center',
     },
     footer: {
       flex: 0.7,
@@ -14,11 +15,13 @@ import { StyleSheet } from 'react-native'
       backgroundColor: '#f3ca40',
     },
     imageBackground:{
-      flex: 3,
-      justifyContent:'center',
-      alignItems:'center',
-      width: 130,
+      flex: 2,
+      width: '100%',
+      resizeMode: 'contain',
+      top: 120,
       backgroundColor: '#fdf7fa',
+      marginBottom: -160,
+      marginLeft: 10,
     },
     imageWave:{
       alignItems: 'center',
@@ -42,22 +45,33 @@ import { StyleSheet } from 'react-native'
       alignItems: 'center',
       justifyContent:'center'
     },
-    animation: {
-      backgroundColor:'#577590',
-      paddingVertical:15,
-      marginTop:50,
-      borderRadius:10,
-      justifyContent:'center',
-      alignItems:'center',
+    button: {
+      backgroundColor: '#13528B',
+      height: 60,
+      flexDirection: 'row',
+      borderRadius: 10,
+      overflow: 'hidden',
+      alignItems: 'center',
+      marginTop: 40,
     },
-    textLogin: {
-      color:'white',
-      fontWeight:'bold',
-      fontSize: 18
+    buttonIcon: {
+      height: 60,
+      width: 60,
+      backgroundColor: '#124C80',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    buttonText: {
+      flex: 1,
+      justifyContent: 'center',
+      textAlign: 'center',
+      marginLeft: 40,
+      color: '#FFF',
+      fontSize: 16,
     },
     signUp: {
       flexDirection:'row',
       justifyContent:'center',
-      marginTop:60,
+      marginTop:30,
     }
   });
