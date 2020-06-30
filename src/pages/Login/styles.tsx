@@ -17,11 +17,12 @@ import { StyleSheet } from 'react-native'
     imageBackground:{
       flex: 2,
       width: '100%',
+      height: 265,
       resizeMode: 'contain',
       top: 120,
       backgroundColor: '#fdf7fa',
-      marginBottom: -160,
-      marginLeft: 10,
+      marginTop: -65,
+      marginLeft: 50,
     },
     imageWave:{
       alignItems: 'center',
