@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native'
     },
     header: {
       flex:1,
+      alignItems: 'center',
     },
     footer: {
       flex: 0.7,
@@ -14,13 +15,13 @@ import { StyleSheet } from 'react-native'
       backgroundColor: '#f3ca40',
     },
     imageBackground:{
-      flex: 3,
-      justifyContent:'center',
-      alignItems:'center',
-      width: 220,
+      flex: 2,
+      width: '100%',
+      resizeMode: 'contain',
+      top: 120,
       backgroundColor: '#fdf7fa',
       marginBottom: -160,
-      marginLeft: 10
+      marginLeft: 10,
     },
     imageWave:{
       alignItems: 'center',

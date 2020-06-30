@@ -16,13 +16,13 @@ import { Feather as Icon } from '@expo/vector-icons';
 
 import styles from './styles'
 
-export default function NavBar() {
+export default function Login() {
 
   return (
     <View style={styles.container}>
     <StatusBar hidden={true} barStyle="light-content" />
       <View style={styles.header}>
-          <ImageBackground source={require("../../assets/login/logo.png")} style={styles.imageBackground}></ImageBackground>
+          <ImageBackground source={require("../../assets/login/logoLogin.png")} style={styles.imageBackground}></ImageBackground>
           <Image
             style={styles.imageWave}
             source={require('../../assets/login/beer.png')}
@@ -51,7 +51,7 @@ export default function NavBar() {
                   />
               </View>
             
-            <View style={styles.button}>
+            <TouchableOpacity style={styles.button}>
               <Text style={styles.buttonText}>
                 Entrar
               </Text>
@@ -60,7 +60,7 @@ export default function NavBar() {
                   <Icon name="arrow-right" color="#FFF" size={24} />
                 </Text>
               </View>
-           </View>
+           </TouchableOpacity>
            
             <View style={styles.signUp}>
                   <Text style={{color:'#fdf7fa'}}>Não possui conta?</Text>
