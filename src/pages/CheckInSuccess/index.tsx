@@ -1,37 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import styles from './styles'
 
-export default function Rota() {
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Image } from 'react-native';
+
+import { Feather as Icon } from '@expo/vector-icons';
+
+export default function CheckInSuccess() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Template <Text style={styles.name}>Cade o bar?</Text></Text>
-      <Text style={styles.description}>Bem Vindo(a) ao Check-in Sucesso!</Text>
-      <StatusBar style="auto" />
+
+      <View style={styles.containerTop}>
+        <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        <Text style={styles.textTop}>Check-In Success</Text>
+      </View>
+
+      <View style={styles.containerBottom}>
+        <View style={styles.imageCheck}>
+          <Image
+            source={require('../../assets/login/success.png')}
+          />
+        </View>
+
+        <Text style={styles.textCheck0}>Check-in Realizado</Text>
+        <Text style={styles.textCheck1}>com Sucesso!</Text>
+        
+        <Text style={styles.textCheck2}>Comece sua descobertas nesse</Text>
+        <Text>ambiente!</Text>
+        
+        <Text style={styles.textCheck3}>Você tem direito a uma rodada da</Text>
+        <Text>sorte, clique no botão abaixo e receba</Text>
+        <Text>um mimo! </Text>
+
+        <View style={styles.imagePlay}>
+          <Image
+            source={require('../../assets/login/play.png')}
+          />
+        </View>
+
+      </View>
+
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#37323e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    fontWeight: "bold",
-  },
-  name: {
-    color: '#f3ca40',
-    fontWeight: "bold",
-  },
-  description: {
-    top: 10,
-    color: '#BFBDC1',
-    fontWeight: '100',
-    width: 300,
-    textAlign: 'center'
-  },
-});
