@@ -16,7 +16,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 import styles from './styles'
 
-export default function NavBar() {
+export default function Login() {
 
   return (
     <View style={styles.container}>
