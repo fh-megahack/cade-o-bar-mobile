@@ -21,3 +21,5 @@ npm install
 ```
 npm start or expo start
 ```
+
+Desenvovendo
