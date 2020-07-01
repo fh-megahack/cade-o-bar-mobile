@@ -25,13 +25,13 @@ const BottomBar = () => {
       <View style={styles.container}>
         <View style={[styles.col1, {borderTopRightRadius: 200}]}>
             <TouchableOpacity onPress={handleNavigateToRank}>
-                <MaterialCommunityIcons name="podium-gold" size={30} color="#f3ca40" />
+                <MaterialCommunityIcons name="podium-gold" size={30} color="#fff" />
             </TouchableOpacity>
         </View>
 
         <View style={[styles.col1, {borderTopLeftRadius: 200}]}>
             <TouchableOpacity onPress={handleNavigateToProfile}>
-                <AntDesign name="user" size={30} color="#f3ca40" />
+                <AntDesign name="user" size={30} color="#fff" />
             </TouchableOpacity>
         </View>
       </View>
