@@ -74,6 +74,6 @@ export default StyleSheet.create({
   },
 
   footer: {
-    flex: 2
+    flex: 2 
   }
 });

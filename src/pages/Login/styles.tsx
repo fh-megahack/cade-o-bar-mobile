@@ -37,7 +37,7 @@ import { StyleSheet } from 'react-native'
       flexDirection:'row',
       borderBottomWidth:1,
       borderBottomColor:'#fff',
-      width: '90%',
+      width: '100%',
       alignItems: 'center',
     },
 
