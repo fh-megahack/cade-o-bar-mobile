@@ -36,7 +36,16 @@ export default StyleSheet.create({
         height: '85%',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        alignItems: 'center'
+        alignItems: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 10,
+            height: 50,
+        },
+        shadowOpacity: 1.0,
+        shadowRadius: 16.00,
+
+        elevation: 24
     },
     imageCheck: {
         marginTop: 40
