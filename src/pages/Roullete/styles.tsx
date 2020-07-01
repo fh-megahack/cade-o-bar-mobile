@@ -11,23 +11,21 @@ export default StyleSheet.create({
         backgroundColor: '#F3CA40',
         width: '100%',
         height: '15%',
+        marginLeft: '10%',
         marginBottom: 'auto',
         alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     arrowLeft: {
-        marginRight: 'auto',
-        marginLeft: 20,
-        marginTop: 25
+        marginLeft: '5%',
+        marginTop: '5%',
     },
     textTop: {
-        marginTop: 20,
         marginRight: 'auto',
-        marginLeft: -40,
+        marginLeft: '25%',
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
     },
     containerBottom: {
         backgroundColor: '#FFF',

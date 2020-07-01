@@ -57,7 +57,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 8,
     overflow: 'hidden',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   mapMarkerImage: {
@@ -69,7 +69,7 @@ export default StyleSheet.create({
   mapMarkerTitle: {
     flex: 1,
     color: '#fff',
-    fontSize: 8,
+    fontSize: 10,
     lineHeight: 23,
   },
 

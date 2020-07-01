@@ -1,17 +1,28 @@
 import React from 'react';
 import styles from './styles'
-
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Feather as Icon } from '@expo/vector-icons';
 
 export default function CheckInSuccess() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
+  function handleNavigateToRoullete() {
+    navigation.navigate('Roullete')
+  }
+
   return (
     <View style={styles.container}>
 
       <View style={styles.containerTop}>
-        <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        <TouchableOpacity onPress={handleNavigateToHome}>
+          <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        </TouchableOpacity>
         <Text style={styles.textTop}>Check-In Success</Text>
       </View>
 
@@ -33,9 +44,11 @@ export default function CheckInSuccess() {
         <Text>um mimo! </Text>
 
         <View style={styles.imagePlay}>
-          <Image
-            source={require('../../assets/login/play.png')}
-          />
+          <TouchableOpacity onPress={handleNavigateToRoullete}>
+            <Image
+              source={require('../../assets/login/play.png')}
+            />
+          </TouchableOpacity>
         </View>
 
       </View>
