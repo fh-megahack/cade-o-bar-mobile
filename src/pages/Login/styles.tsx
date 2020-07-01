@@ -5,31 +5,34 @@ import { StyleSheet } from 'react-native'
       flex:1,
       backgroundColor:'#fdf7fa',
     },
+
     header: {
       flex:1,
       alignItems: 'center',
     },
+
     footer: {
       flex: 0.7,
       padding:25,
       backgroundColor: '#f3ca40',
     },
+
     imageBackground:{
-      flex: 2,
-      width: '100%',
-      height: 265,
-      resizeMode: 'contain',
-      top: 120,
+      flex: 1,
+      width: '90%',
+      top: '20%',
+      left: '7%',
       backgroundColor: '#fdf7fa',
-      marginTop: -65,
-      marginLeft: 50,
+      marginBottom: -160,
     },
+
     imageWave:{
       alignItems: 'center',
       justifyContent: 'center',
       left: 0,
-      top: 300,
+      top: '60%',
     },
+
     action: {
       flexDirection:'row',
       borderBottomWidth:1,
@@ -37,15 +40,18 @@ import { StyleSheet } from 'react-native'
       width: '90%',
       alignItems: 'center',
     },
+
     textInput: {
       marginTop:30,
       paddingBottom:10,
       color:'#fff'
     },
+
     button_container: {
       alignItems: 'center',
       justifyContent:'center'
     },
+
     button: {
       backgroundColor: '#13528B',
       height: 60,
@@ -55,6 +61,7 @@ import { StyleSheet } from 'react-native'
       alignItems: 'center',
       marginTop: 40,
     },
+
     buttonIcon: {
       height: 60,
       width: 60,
@@ -62,6 +69,7 @@ import { StyleSheet } from 'react-native'
       justifyContent: 'center',
       alignItems: 'center'
     },
+
     buttonText: {
       flex: 1,
       justifyContent: 'center',
@@ -70,6 +78,7 @@ import { StyleSheet } from 'react-native'
       color: '#FFF',
       fontSize: 16,
     },
+
     signUp: {
       flexDirection:'row',
       justifyContent:'center',

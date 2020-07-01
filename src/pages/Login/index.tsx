@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -17,6 +17,13 @@ import { Feather as Icon } from '@expo/vector-icons';
 import styles from './styles'
 
 export default function Login() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
+
 
   return (
     <View style={styles.container}>
@@ -51,7 +58,7 @@ export default function Login() {
                   />
               </View>
             
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={handleNavigateToHome}>
               <Text style={styles.buttonText}>
                 Entrar
               </Text>

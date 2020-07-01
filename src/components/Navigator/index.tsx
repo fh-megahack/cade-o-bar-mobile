@@ -1,1 +1,49 @@
+import React from 'react';
+import { View } from 'react-native';
+import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
+import styles from './styles'
+
+const BottomBar = () => {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToProfile() {
+    navigation.navigate('Profile')
+  }
+  function handleNavigateToCheckIn() {
+    navigation.navigate('CheckIn')
+  }
+  function handleNavigateToRank() {
+    navigation.navigate('Rank')
+  }
+
+  return (
+    <View>
+      <View style={styles.container}>
+        <View style={[styles.col1, {borderTopRightRadius: 200}]}>
+            <TouchableOpacity onPress={handleNavigateToRank}>
+                <MaterialCommunityIcons name="podium-gold" size={30} color="#f3ca40" />
+            </TouchableOpacity>
+        </View>
+
+        <View style={[styles.col1, {borderTopLeftRadius: 200}]}>
+            <TouchableOpacity onPress={handleNavigateToProfile}>
+                <AntDesign name="user" size={30} color="#f3ca40" />
+            </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.center} />
+      
+      <View style={styles.volumnCon}>
+        <TouchableOpacity onPress={handleNavigateToCheckIn}>
+            <AntDesign name="qrcode" size={30} color="#37323e" />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default BottomBar;
