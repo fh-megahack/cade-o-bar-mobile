@@ -4,7 +4,6 @@ import {
   View,
   Text,
   ImageBackground,
-  StatusBar,
   TextInput,
   Dimensions,
   TouchableOpacity,
@@ -27,14 +26,10 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <ImageBackground source={require("../../assets/login/logoLogin.png")} style={styles.imageBackground}></ImageBackground>
-        <Image
-          style={styles.imageWave}
-          source={require('../../assets/login/beer.png')}
-        />
+      <View style={styles.top}>
+        <Image source={require("../../assets/login/login-top-bg.png")} style={styles.logo}></Image>
       </View>
-      <View style={styles.footer}>
+      <ImageBackground source={require("../../assets/login/yellow-Bg.png")} resizeMode='cover' style={styles.footer}>
         <View style={styles.action}>
           <Icon name="user" color="#FFF" size={20} style={{ padding: 10, marginTop: 20 }} />
           <TextInput
@@ -72,7 +67,7 @@ export default function Login() {
           <Text style={{ color: '#fdf7fa' }}>Não possui conta?</Text>
           <Text style={{ color: '#577590', fontWeight: 'bold' }}> Registre-se</Text>
         </View>
-      </View>
+      </ImageBackground>
     </View>
   );
 }
