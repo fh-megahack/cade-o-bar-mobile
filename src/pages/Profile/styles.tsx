@@ -131,7 +131,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Roboto_500Medium',
     color: '#37323E',
-    fontSize: 24,
+    fontSize: 23,
   },
   rescueTitle: {
     textAlign: 'left',

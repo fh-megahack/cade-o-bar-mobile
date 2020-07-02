@@ -41,7 +41,7 @@ export default StyleSheet.create({
     barHeader: {
         width: '100%',
         alignItems: 'center',
-        marginTop: '10%',
+        top: 50,
         shadowColor: "#000",
         shadowOffset: {
         width: 0,
@@ -64,6 +64,18 @@ export default StyleSheet.create({
         overflow: 'hidden',
         alignItems: 'center',
         position: 'relative'
+    },
+
+    heartView: {
+        width: '90%',
+        position: 'absolute',
+        zIndex: 1, 
+        top: '10%',
+    },
+
+    heartButton: {
+        width: 35,
+        marginLeft: '85%'
     },
 
     barHeaderImage: {

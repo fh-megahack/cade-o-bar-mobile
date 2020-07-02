@@ -56,9 +56,9 @@ export default function Rota() {
                 <Text style={styles.rescueTitle}>Pontos para Resgate</Text>
                 <Text style={styles.rescuePoints}>590</Text>
               </View>
-              <RectButton onPress={handleRescuePoints} style={styles.rescueBtn}>
+              <TouchableOpacity onPress={handleRescuePoints} style={styles.rescueBtn}>
                 <Text style={styles.rescueBtnText}>Quero Desconto!</Text>
-              </RectButton>
+              </TouchableOpacity>
             </View>
             <Text style={styles.sectionTitle}>Últimas Descobertas</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20 }} style={styles.slider}>

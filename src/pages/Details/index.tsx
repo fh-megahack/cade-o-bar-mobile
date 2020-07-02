@@ -34,6 +34,11 @@ export default function Rota() {
 
         <View style={styles.barHeader}>
           <View style={styles.barHeaderContainer}>
+            <View style={styles.heartView}>
+              <TouchableOpacity style={styles.heartButton}>
+                <AntDesign style={styles.heart} name="heart" size={35} color="red" />
+              </TouchableOpacity>
+            </View>
             <Image style={styles.barHeaderImage} source={require('../../assets/home/barDoZe.png')} />
             
             <View style={styles.barInfos}>
