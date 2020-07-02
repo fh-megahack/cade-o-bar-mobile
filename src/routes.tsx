@@ -22,12 +22,12 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator headerMode="none" >
+                <Stack.Screen name="Details" component={Details} options={{ title: 'Perfil' }} />
                 <Stack.Screen name="Login" component={Login} options={{ title: 'Perfil' }} />
                 <Stack.Screen name="Home" component={Home} options={{ title: 'Perfil' }} />
                 <Stack.Screen name="Rank" component={Rank} options={{ title: 'Classificação' }} />
                 <Stack.Screen name="CheckIn" component={CheckIn} options={{ title: 'Check-In' }} />
                 <Stack.Screen name="Profile" component={Profile} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="Details" component={Details} options={{ title: 'Perfil' }} />
                 <Stack.Screen name="Discount" component={Discount} options={{ title: 'Perfil' }} />
                 <Stack.Screen name="Roullete" component={Roullete} options={{ title: 'Perfil' }} />
                 <Stack.Screen name="CheckInSuccess" component={CheckInSuccess} options={{ title: 'Perfil' }} />
