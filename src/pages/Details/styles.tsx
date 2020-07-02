@@ -27,30 +27,25 @@ export default StyleSheet.create({
         zIndex: 4
     },
     topNav: {
-        marginLeft: '5%',
+        justifyContent: 'center',
+        alignItems: 'center',
         marginTop: '10%',
-        flexDirection: 'row',
-    },
-    arrowLeft: {
-        marginLeft: '5%',
-        marginTop: '5%',
     },
     textTop: {
-        marginRight: 'auto',
-        marginLeft: '24%',
+        justifyContent: 'center',
         color: '#FFF',
         fontWeight: 'bold',
         fontSize: 20
     },
 
-    mapMarker: {
+    barHeader: {
         width: '100%',
         alignItems: 'center',
         marginTop: '10%',
         shadowColor: "#000",
         shadowOffset: {
-            width: 0,
-            height: 7,
+        width: 0,
+        height: 7,
         },
         shadowOpacity: 1.43,
         shadowRadius: 9.51,
@@ -60,7 +55,7 @@ export default StyleSheet.create({
         zIndex: 3
       },
     
-    mapMarkerContainer: {
+    barHeaderContainer: {
         width: 322,
         height: 242,
         backgroundColor: '#211D27',
@@ -71,13 +66,13 @@ export default StyleSheet.create({
         position: 'relative'
     },
 
-    mapMarkerImage: {
+    barHeaderImage: {
         width: '100%',
         height: '50%',
         resizeMode: 'cover',
     },
 
-    mapMarkerTitle: {
+    barHeaderTitle: {
         flex: 1,
         color: '#fff',
         fontSize: 18,
@@ -232,7 +227,8 @@ export default StyleSheet.create({
 
     checkOut: {
         width: '80%',
-        marginTop: '30%'
+        marginTop: '10%',
+        marginBottom: 30
     },
 
     checkOutButton: {

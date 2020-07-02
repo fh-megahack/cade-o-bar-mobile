@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { Text, View, TouchableOpacity, Image, Animated, SafeAreaView, FlatList } from 'react-native';
+import { Text, View, TouchableOpacity, Image, Animated, SafeAreaView, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Feather as Icon } from '@expo/vector-icons';
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
 import HomeStars from '../../components/HomeStars/index'
@@ -16,30 +15,30 @@ export default function Rota() {
 
   const navigation = useNavigation();
 
-  function handleNavigateToHome() {
-    navigation.navigate('Home')
+  function handleNavigateToCheckOut() {
+    navigation.navigate('CheckOut')
   }
 
   return (
     <>
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
+      <ScrollView>
+    
+    <View style={styles.container}>
 
       <View style={styles.header}>
 
         <View style={styles.topNav}>
-          <TouchableOpacity onPress={handleNavigateToHome}>
-            <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
-          </TouchableOpacity>
           <Text style={styles.textTop}>Detalhes</Text>
         </View>
 
-        <View style={styles.mapMarker}>
-          <View style={styles.mapMarkerContainer}>
-            <Image style={styles.mapMarkerImage} source={require('../../assets/home/barDoZe.png')} />
+        <View style={styles.barHeader}>
+          <View style={styles.barHeaderContainer}>
+            <Image style={styles.barHeaderImage} source={require('../../assets/home/barDoZe.png')} />
             
             <View style={styles.barInfos}>
               <View>
-                <Text style={styles.mapMarkerTitle}>Bar do Pedro</Text>
+                <Text style={styles.barHeaderTitle}>Bar do Pedro</Text>
               </View>
               <View style={styles.rating}>
                 <Text style={styles.infoText}>Descobertas</Text>
@@ -100,13 +99,16 @@ export default function Rota() {
               </View>
             </View>
         </View>
-
-        <View style={styles.checkOut}>
-          <TouchableOpacity style={styles.checkOutButton}>
-            <Text style={styles.textButton}>Fazer Check-Out</Text>
-          </TouchableOpacity>
+      
+          <View style={styles.checkOut}>
+            <TouchableOpacity style={styles.checkOutButton} onPress={handleNavigateToCheckOut}>
+              <Text style={styles.textButton}>Fazer Check-Out</Text>
+            </TouchableOpacity>
+          </View>
         </View>
+      </ScrollView>
     </SafeAreaView>
+    
       </>
   );
 }
