@@ -36,7 +36,7 @@ export default function Rota() {
           <View style={styles.barHeaderContainer}>
             <View style={styles.heartView}>
               <TouchableOpacity style={styles.heartButton}>
-                <AntDesign style={styles.heart} name="heart" size={35} color="red" />
+                <AntDesign name="heart" size={35} color="red" />
               </TouchableOpacity>
             </View>
             <Image style={styles.barHeaderImage} source={require('../../assets/home/barDoZe.png')} />
@@ -99,7 +99,7 @@ export default function Rota() {
                   <Text style={styles.favoritesName}>André Fuzi</Text>
                 </View>
                 <View style={styles.favoritesCardFooter}>
-                  <Text style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar...</Text>
+                  <Text numberOfLines={1} style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar!</Text>
                 </View>
               </View>
             </View>

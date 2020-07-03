@@ -21,11 +21,12 @@ export default StyleSheet.create({
         paddingHorizontal: 20,
         width: '80%',
         fontSize: 15,
+        fontFamily: 'OpenSans_300Light',
       },
     
       welcomeTextName: {
         color: '#fff',
-        fontWeight: 'bold',
+        fontFamily: 'OpenSans_600SemiBold',
       },
     
       mapContainer: {
