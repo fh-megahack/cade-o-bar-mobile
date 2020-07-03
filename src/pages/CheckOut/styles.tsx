@@ -66,7 +66,8 @@ export default StyleSheet.create({
     textInput: {
         marginBottom: 'auto',
         padding: 20,
-        color: 'white'
+        color: 'white',
+        width: '100%',
     },
     button: {
         backgroundColor: '#F3CA40',

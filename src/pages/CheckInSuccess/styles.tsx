@@ -36,7 +36,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         shadowColor: "#000",
         shadowOffset: {
-            width: 10,
+            width: 10, 
             height: 50,
         },
         shadowOpacity: 1.0,
@@ -48,23 +48,28 @@ export default StyleSheet.create({
         marginTop: 40
     },
     textCheck0: {
-        fontWeight: 'bold' ,
+        fontFamily: 'OpenSans_600SemiBold',
         fontSize: 20,
         textAlign: 'center',
         marginTop: 15
     },
     textCheck1: {
-        fontWeight: 'bold' ,
+        fontFamily: 'OpenSans_600SemiBold',
         fontSize: 20,
         textAlign: 'center'
     },
     textCheck2: {
         textAlign: 'center',
-        marginTop: 15
+        fontSize: 16,
+        marginTop: 15,
+        fontFamily: 'OpenSans_300Light',
+        width: '70%'
     },
     textCheck3: {
         textAlign: 'center',
-        marginTop: 150
+        marginTop: '40%',
+        width: '70%',
+        fontFamily: 'OpenSans_300Light',
     },
     imagePlay: {
         marginTop: 40,

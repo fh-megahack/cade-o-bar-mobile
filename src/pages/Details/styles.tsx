@@ -33,8 +33,8 @@ export default StyleSheet.create({
     },
     textTop: {
         justifyContent: 'center',
+        fontFamily: 'OpenSans_600SemiBold',
         color: '#FFF',
-        fontWeight: 'bold',
         fontSize: 20
     },
 
@@ -88,6 +88,7 @@ export default StyleSheet.create({
         flex: 1,
         color: '#fff',
         fontSize: 18,
+        fontFamily: 'Roboto_400Regular',
         fontWeight: 'bold',
         marginTop: '5%',
     },
@@ -112,7 +113,8 @@ export default StyleSheet.create({
 
     infoText: {
         color: '#fff',
-        fontSize: 17
+        fontSize: 17,
+        fontFamily: 'Roboto_300Light',
     },
 
     counter: {
@@ -156,12 +158,14 @@ export default StyleSheet.create({
 
     barLocationText: {
         color: '#F6BB96',
-        marginHorizontal: '3%'
+        marginHorizontal: '3%',
+        fontFamily: 'Roboto_400Regular',
     },
 
     barLinkText: {
         color: '#F6BB96',
         marginHorizontal: '3%',
+        fontFamily: 'Roboto_400Regular',
         textDecorationLine: 'underline',
     },
 
@@ -174,6 +178,7 @@ export default StyleSheet.create({
     homeStarsText: {
         marginHorizontal: '3%',
         color: '#fff',
+        fontFamily: 'Roboto_500Medium',
         fontSize: 18
     },
 
@@ -189,12 +194,14 @@ export default StyleSheet.create({
     favoritesText: {
         marginHorizontal: '3%',
         color: '#fff',
+        fontFamily: 'Roboto_500Medium',
         fontSize: 18
     },
 
     seeMore: {
         color: '#BFBDC1',
         fontSize: 10,
+        fontFamily: 'Roboto_400Regular',
         marginTop: 5,
     },
 
@@ -219,6 +226,7 @@ export default StyleSheet.create({
         color: '#fff',
         padding: '2%',
         paddingHorizontal: '5%',
+        fontFamily: 'Roboto_300Light',
         width: '100%'
     },
 
@@ -234,7 +242,9 @@ export default StyleSheet.create({
 
     favoritesCardComment: {
         fontSize: 15,
+        fontFamily: 'Roboto_300Light',
         color: '#fff',
+        maxWidth: '95%',
     },
 
     checkOut: {

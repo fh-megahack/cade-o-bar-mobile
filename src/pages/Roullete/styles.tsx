@@ -46,15 +46,15 @@ export default StyleSheet.create({
     },
     textRoulette0: {
         fontSize: 26,
-        fontWeight: 'bold',
+        fontFamily: 'OpenSans_600SemiBold',
         marginTop: 15
     },
     textRoulette1: {
+        textAlign: 'center',
         fontSize: 16,
+        fontFamily: 'OpenSans_300Light',
+        width: '80%',
         marginTop: 15,
-    },
-    textRoulette2: {
-        fontSize: 16,
     },
     button: {
         backgroundColor: '#F3CA40',
@@ -76,13 +76,13 @@ export default StyleSheet.create({
         shadowRadius: 6.68,
         
         elevation: 11,
+        paddingHorizontal: 30
     },
     buttonText: {
         flex: 1,
-        justifyContent: 'center',
-        textAlign: 'center',
         color: '#FFF',
         fontSize: 18,
-        marginRight: 20
+        marginRight: 20,
+        textAlign: 'center'
     },
 });

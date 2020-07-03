@@ -4,6 +4,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Feather as Icon } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function CheckInSuccess() {
 
@@ -23,25 +24,20 @@ export default function CheckInSuccess() {
         <TouchableOpacity onPress={handleNavigateToHome}>
           <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
         </TouchableOpacity>
-        <Text style={styles.textTop}>Check-In Success</Text>
+        <Text style={styles.textTop}>Check-In Sucesso</Text>
       </View>
 
       <View style={styles.containerBottom}>
         <View style={styles.imageCheck}>
-          <Image
-            source={require('../../assets/login/success.png')}
-          />
+          <Ionicons name="ios-checkmark-circle-outline" size={102} color="#15880B" />
         </View>
 
         <Text style={styles.textCheck0}>Check-in Realizado</Text>
         <Text style={styles.textCheck1}>com Sucesso!</Text>
         
-        <Text style={styles.textCheck2}>Comece sua descobertas nesse</Text>
-        <Text>ambiente!</Text>
+        <Text style={styles.textCheck2}>Comece sua descobertas nesse ambiente!</Text>
         
-        <Text style={styles.textCheck3}>Você tem direito a uma rodada da</Text>
-        <Text>sorte, clique no botão abaixo e receba</Text>
-        <Text>um mimo! </Text>
+        <Text style={styles.textCheck3}>Você tem direito a uma rodada da sorte, clique no botão abaixo e receba um mimo!</Text>
 
         <View style={styles.imagePlay}>
           <TouchableOpacity onPress={handleNavigateToRoullete}>

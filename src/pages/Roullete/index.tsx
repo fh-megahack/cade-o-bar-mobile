@@ -4,6 +4,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { Feather as Icon } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Roulette() {
 
@@ -34,8 +35,7 @@ export default function Roulette() {
         </View>
 
         <Text style={styles.textRoulette0}>Ganhe Brindes!</Text>
-        <Text style={styles.textRoulette1}>Concorra a brindes e descontos para</Text>
-        <Text style={styles.textRoulette2}>poder usar neste estabelecimento!</Text>
+        <Text style={styles.textRoulette1}>Concorra a brindes e descontos para poder usar neste estabelecimento!</Text>
         
         <View>
           <Image
@@ -45,10 +45,7 @@ export default function Roulette() {
         </View>
 
         <TouchableOpacity style={styles.button} onPress={handleNavigateToDetails}>
-              <Image
-                source={require('../../assets/login/iconBar.png')}
-                style={{width: 25, height: 25, marginLeft: 30}}
-              />
+              <MaterialCommunityIcons name="location-enter" size={24} color="#fff" />
               <Text style={styles.buttonText}>
                 Ir para o Bar
               </Text>
