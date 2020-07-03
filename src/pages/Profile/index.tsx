@@ -49,7 +49,7 @@ export default function Rota() {
                 <Text style={styles.userInfoContent}>1668</Text>
               </View>
             </View>
-            <View style={styles.separator} />
+            <View style={styles.separator} /> 
             <View style={styles.rescueContent}>
               <Text style={styles.rescueText}>Você sabia que no aplicativo “Cadê o Bar?” da para trocar seus pontos em cupons de desconto?</Text>
               <View style={styles.rescueHead}>

@@ -15,6 +15,7 @@ import Roullete from './pages/Roullete/index'
 import CheckIn from './pages/CheckIn/index'
 import CheckInSuccess from './pages/CheckInSuccess/index'
 import CheckOut from './pages/CheckOut/index'
+import MapDetail from './pages/public_access/Details/index'
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ export default function Navigation() {
                 <Stack.Screen name="Roullete" component={Roullete} options={{ title: 'Roullete' }} />
                 <Stack.Screen name="CheckInSuccess" component={CheckInSuccess} options={{ title: 'CheckInSuccess' }} />
                 <Stack.Screen name="CheckOut" component={CheckOut} options={{ title: 'CheckOut' }} />
+                <Stack.Screen name="MapDetail" component={MapDetail} options={{ title: 'MapDetail' }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
