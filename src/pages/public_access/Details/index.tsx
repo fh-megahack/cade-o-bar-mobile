@@ -15,8 +15,8 @@ export default function Rota() {
 
   const navigation = useNavigation();
 
-  function handleNavigateToCheckOut() {
-    navigation.navigate('CheckOut')
+  function handleNavigationBack() {
+    navigation.goBack()
   }
 
   return (
@@ -29,6 +29,9 @@ export default function Rota() {
       <View style={styles.header}>
 
         <View style={styles.topNav}>
+          <TouchableOpacity onPress={handleNavigationBack} >
+            <AntDesign name="arrowleft" size={24} color="#fff" />
+          </TouchableOpacity>
           <Text style={styles.textTop}>Detalhes</Text>
         </View>
 
@@ -102,14 +105,18 @@ export default function Rota() {
                   <Text numberOfLines={1} style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar!</Text>
                 </View>
               </View>
+
+              <View style={styles.favoritesCard}>
+                <View style={styles.favoritesCardHeader}>
+                  <Image style={styles.favoritesImage} source={require('../../../assets/details/andreProfiles.jpg')} />
+                  <Text style={styles.favoritesName}>André Fuzi</Text>
+                </View>
+                <View style={styles.favoritesCardFooter}>
+                  <Text numberOfLines={1} style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar!</Text>
+                </View>
+              </View>
             </View>
         </View>
-      
-          <View style={styles.checkOut}>
-            <TouchableOpacity style={styles.checkOutButton} onPress={handleNavigateToCheckOut}>
-              <Text style={styles.textButton}>Fazer Check-Out</Text>
-            </TouchableOpacity>
-          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

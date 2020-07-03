@@ -21,7 +21,7 @@ export default function Rota() {
   }
 
   function handleRescuePoints() {
-
+    navigation.navigate('Discount')
   }
 
   return (

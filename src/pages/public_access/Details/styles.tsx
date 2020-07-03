@@ -27,12 +27,14 @@ export default StyleSheet.create({
         zIndex: 4
     },
     topNav: {
-        justifyContent: 'center',
+        flexDirection: 'row',
+        marginHorizontal: '5%',
         alignItems: 'center',
         marginTop: '10%',
     },
+
     textTop: {
-        justifyContent: 'center',
+        marginLeft: '31%',
         fontFamily: 'OpenSans_600SemiBold',
         color: '#FFF',
         fontSize: 20
