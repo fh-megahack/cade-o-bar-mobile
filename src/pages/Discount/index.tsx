@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles'
 
 import { Feather as Icon } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
 
 function gerarCupom() {
   return Math.random().toString(36).slice(-6).toUpperCase();
@@ -36,31 +36,23 @@ export default function Discount() {
       </View>
 
       <View style={styles.containerBottom}>
-        <Image
-          style={styles.imageTicket}
-          source={require('../../assets/discount/ticket.png')}
-        />
+        <Entypo style={styles.imageTicket} name="ticket" color="#37323e" size={100} />
         <Text style={styles.gerado}> Cupom gerado!</Text>
 
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.cupomText1}>Seu desconto foi gerado, basta inserir</Text>
-          <Text style={styles.cupomText}>o código abaixo em sua próxima</Text>
-          <Text style={styles.cupomText}>compra no aplicativo de nossos</Text>
-          <Text style={styles.cupomText}>parceiros!</Text>
+        <View style={styles.description}>
+          <Text style={styles.cupomText1}>Seu desconto foi gerado, basta inserir o código abaixo em sua próxima compra no aplicativo de nossos parceiros!</Text>
         </View>
 
         <View style={styles.buttonCupom}>
-          <Text style={styles.buttonCupomText}>{cupom}</Text>
+          <Text style={styles.buttonCupomText}>#{cupom}</Text>
           <TouchableOpacity onPress={() => Clipboard.setString(cupom)} style={styles.buttonCupomIcon}>
             <MaterialCommunityIcons name="checkbox-multiple-blank-outline" size={24} color="#626262" />
           </TouchableOpacity>
         </View>
 
         <TouchableOpacity style={styles.button} onPress={handleNavigateToHome}>
-          <MaterialCommunityIcons name="location-enter" size={24} color="#fff" />
-          <Text style={styles.buttonText}>
-            Ir para o Bar
-              </Text>
+          <AntDesign name="home" size={24} color="#fff" />
+          <Text style={styles.buttonText}>Voltar ao Início</Text>
         </TouchableOpacity>
       </View>
 

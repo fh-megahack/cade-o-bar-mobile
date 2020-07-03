@@ -45,49 +45,55 @@ export default StyleSheet.create({
         elevation: 24,
     },
     imageTicket: {
-        marginTop: 60
+        marginTop: '20%'
     },
     gerado: {
-        marginTop: 20, 
-        fontWeight: 'bold', 
+        marginTop: '5%', 
+        fontFamily: 'OpenSans_600SemiBold', 
         fontSize: 26
     },
-    cupomText: {
-        fontSize: 18
+
+    description: {
+        width: '90%',
+        alignItems: 'center'
     },
+
     cupomText1: {
-        fontSize: 18,
-        marginTop: 15
+        fontSize: 19,
+        textAlign: 'center',
+        fontFamily: 'OpenSans_300Light', 
+        marginTop: '5%'
     },
     buttonCupom: {
         alignItems: 'center',
+        justifyContent: 'flex-end',
         flexDirection: 'row',
         borderWidth: 1,
-        height: 50,
-        width: '70%',
+        height: '8%',
+        width: '90%',
         borderRadius: 25,
-        marginTop: 70,
-        borderColor: '#d3d3d3',
+        marginTop: '20%',
+        borderColor: '#BDBDBD',
     },
-    buttonCupomText: {
-        marginHorizontal: 90, 
-        fontSize: 20, 
-        fontFamily: 'Roboto_400Regular'
+    buttonCupomText: { 
+        fontSize: 34, 
+        fontFamily: 'Roboto_400Regular',
+        color: '#37323e',
     },
     buttonCupomIcon: { 
-        marginLeft: 'auto', 
-        marginRight: 10 
+        marginLeft: '15%',
+        marginRight: '5%'
     },
     button: {
         backgroundColor: '#F3CA40',
         width: '70%',
-        height: 60,
+        height: '10%',
         flexDirection: 'row',
         borderTopLeftRadius: 25,
         borderBottomLeftRadius: 10,
         overflow: 'hidden',
         alignItems: 'center',
-        marginTop: 110,
+        marginTop: '25%',
         marginLeft: 'auto',
         shadowColor: "#000",
         shadowOffset: {
@@ -95,16 +101,16 @@ export default StyleSheet.create({
             height: 5,
         },
         shadowOpacity: 0.36,
-        shadowRadius: 6.68,
+        shadowRadius: 3.68,
         
-        elevation: 11,
+        elevation: 5,
         paddingHorizontal: 30
     },
     buttonText: {
         flex: 1,
         color: '#FFF',
         fontSize: 18,
-        marginRight: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'OpenSans_300Light'
     },
 });
