@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StatusBar, Text, View, TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { AntDesign } from '@expo/vector-icons';
 
 // Estilos
 import styles from './styles'
 import BottomBar from '../../components/Navigator';
 
 export default function CheckIn() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
 
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
@@ -18,31 +26,39 @@ export default function CheckIn() {
     })();
   }, []);
 
-  const handleBarCodeScanned = ({ data }) => {
+  const handleBarCodeScanned = () => {
     setScanned(true);
-    alert(`${data}`);
+
+    navigation.navigate('CheckInSuccess')
   };
 
-  if (hasPermission === null) {
-    return <Text>Solicitando permissão da câmera</Text>;
-  }
-  if (hasPermission === false) {
-    return <Text>Desculpe, mas não conseguimos acessar a câmera</Text>;
-  }
-
   return (
+    <>
+      <StatusBar barStyle="light-content" />
       <View style={styles.container}>
-              <View style={styles.qr}>
-                <View>
-                  <BarCodeScanner
-                    onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-                    style={styles.scanner}
-                  />
-                </View>
-              </View>
+
+        <View style={styles.header}>
+          <TouchableOpacity onPress={handleNavigateToHome} >
+            <AntDesign name="arrowleft" size={24} color="#fff" />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.welcomeText}>Certo <Text style={styles.welcomeTextName}>Pedro</Text>,</Text>
+            <Text style={styles.welcomeText}>Escaneie o Código QR e explore esse ambiente incrível!</Text>
+          </View>
+        </View>
+
+
+        <View style={styles.mapContainer}>
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+            style={styles.scanner}
+          />
+        </View>
+
         <BottomBar />
 
       </View>
+    </>
   );
 }
 

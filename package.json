@@ -15,6 +15,7 @@
     "@react-navigation/native": "^5.6.1",
     "@react-navigation/stack": "^5.6.2",
     "expo": "~38.0.1",
+    "expo-barcode-scanner": "~8.2.1",
     "expo-font": "~8.2.1",
     "expo-status-bar": "^1.0.0",
     "react": "~16.11.0",
@@ -23,14 +24,14 @@
     "react-native-elements": "^2.0.3",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-maps": "0.27.1",
+    "react-native-ratings": "^7.2.0",
     "react-native-reanimated": "~1.9.0",
     "react-native-safe-area-context": "3.0.2",
     "react-native-screens": "~2.9.0",
     "react-native-svg": "12.1.0",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-web": "~0.11.7",
-    "styled-components": "^5.1.1",
-    "expo-barcode-scanner": "~8.2.1"
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

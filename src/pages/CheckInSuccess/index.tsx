@@ -1,37 +1,54 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import styles from './styles'
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Rota() {
+import { Feather as Icon } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
+
+export default function CheckInSuccess() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
+  function handleNavigateToRoullete() {
+    navigation.navigate('Roullete')
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Template <Text style={styles.name}>Cade o bar?</Text></Text>
-      <Text style={styles.description}>Bem Vindo(a) ao Check-in Sucesso!</Text>
-      <StatusBar style="auto" />
+
+      <View style={styles.containerTop}>
+        <TouchableOpacity onPress={handleNavigateToHome}>
+          <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        </TouchableOpacity>
+        <Text style={styles.textTop}>Check-In Sucesso</Text>
+      </View>
+
+      <View style={styles.containerBottom}>
+        <View style={styles.imageCheck}>
+          <Ionicons name="ios-checkmark-circle-outline" size={102} color="#15880B" />
+        </View>
+
+        <Text style={styles.textCheck0}>Check-in Realizado</Text>
+        <Text style={styles.textCheck1}>com Sucesso!</Text>
+        
+        <Text style={styles.textCheck2}>Comece sua descobertas nesse ambiente!</Text>
+        
+        <Text style={styles.textCheck3}>Você tem direito a uma rodada da sorte, clique no botão abaixo e receba um mimo!</Text>
+
+        <View style={styles.imagePlay}>
+          <TouchableOpacity onPress={handleNavigateToRoullete}>
+            <Image
+              source={require('../../assets/login/play.png')}
+            />
+          </TouchableOpacity>
+        </View>
+
+      </View>
+
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#37323e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    fontWeight: "bold",
-  },
-  name: {
-    color: '#f3ca40',
-    fontWeight: "bold",
-  },
-  description: {
-    top: 10,
-    color: '#BFBDC1',
-    fontWeight: '100',
-    width: 300,
-    textAlign: 'center'
-  },
-});

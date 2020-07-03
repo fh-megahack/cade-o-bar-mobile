@@ -10,7 +10,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 32,
     paddingTop: 36,
-    width: '90%',
+    width: '100%',
     marginBottom: 16,
     alignItems: 'center'
   },
@@ -24,12 +24,13 @@ export default StyleSheet.create({
   welcomeText: {
     color: '#fff',
     paddingHorizontal: 10,
-    fontSize: 13,
+    fontSize: 14,
+    fontFamily: 'OpenSans_300Light'
   },
 
   welcomeTextName: {
     color: '#fff',
-    fontWeight: 'bold',
+    fontFamily: 'OpenSans_600SemiBold'
   },
 
   mapContainer: {
@@ -57,7 +58,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 8,
     overflow: 'hidden',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   mapMarkerImage: {
@@ -69,7 +70,8 @@ export default StyleSheet.create({
   mapMarkerTitle: {
     flex: 1,
     color: '#fff',
-    fontSize: 8,
+    fontFamily: 'Roboto_300Light',
+    fontSize: 10,
     lineHeight: 23,
   },
 
