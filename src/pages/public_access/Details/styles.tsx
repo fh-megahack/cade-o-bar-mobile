@@ -1,13 +1,11 @@
 import { StyleSheet } from 'react-native'
-import Constants from 'expo-constants'
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#37323e',
-        paddingTop: Constants.statusBarHeight,
         alignItems: 'center',
-        justifyContent: 'center', 
+        justifyContent: 'center',
     },
     header: {
         flex: 1,
@@ -89,7 +87,7 @@ export default StyleSheet.create({
     barHeaderTitle: {
         flex: 1,
         color: '#fff',
-        fontSize: 24,
+        fontSize: 18,
         fontFamily: 'Roboto_400Regular',
         fontWeight: 'bold',
         marginTop: '5%',
@@ -115,7 +113,7 @@ export default StyleSheet.create({
 
     infoText: {
         color: '#fff',
-        fontSize: 18,
+        fontSize: 17,
         fontFamily: 'Roboto_300Light',
     },
 
@@ -126,12 +124,11 @@ export default StyleSheet.create({
     },
 
     counterInfo: {
-        alignItems: 'center',
         flexDirection: 'row',
     },
 
     counterInfoText: {
-        fontSize: 27,
+        fontSize: 23,
         color: '#F08A4B',
         fontWeight: 'bold',
         marginLeft: '8%'
@@ -145,7 +142,7 @@ export default StyleSheet.create({
 
     barLinks: {
         width: '90%',
-        marginTop: '20%',
+        marginTop: '30%',
         paddingHorizontal: '6%',
     },
 
@@ -157,22 +154,19 @@ export default StyleSheet.create({
     barLink: {
         flexDirection: 'row',
         marginTop: '2%',
-        marginBottom: '2%',
     },
 
     barLocationText: {
         color: '#F6BB96',
         marginHorizontal: '3%',
-        fontFamily: 'Roboto_300Light',
-        fontSize: 16
+        fontFamily: 'Roboto_400Regular',
     },
 
     barLinkText: {
         color: '#F6BB96',
         marginHorizontal: '3%',
-        fontFamily: 'Roboto_300Light',
+        fontFamily: 'Roboto_400Regular',
         textDecorationLine: 'underline',
-        fontSize: 16
     },
 
     homeStars: {

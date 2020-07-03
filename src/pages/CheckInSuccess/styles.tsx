@@ -45,13 +45,13 @@ export default StyleSheet.create({
         elevation: 24
     },
     imageCheck: {
-        marginTop: 40
+        marginTop: '9%'
     },
     textCheck0: {
         fontFamily: 'OpenSans_600SemiBold',
         fontSize: 20,
         textAlign: 'center',
-        marginTop: 15
+        marginTop: '5%'
     },
     textCheck1: {
         fontFamily: 'OpenSans_600SemiBold',
@@ -61,7 +61,7 @@ export default StyleSheet.create({
     textCheck2: {
         textAlign: 'center',
         fontSize: 16,
-        marginTop: 15,
+        marginTop: '5%',
         fontFamily: 'OpenSans_300Light',
         width: '70%'
     },
@@ -72,6 +72,6 @@ export default StyleSheet.create({
         fontFamily: 'OpenSans_300Light',
     },
     imagePlay: {
-        marginTop: 40,
+        marginTop: '5%',
     }
 });

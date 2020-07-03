@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 
-import HomeStars from '../../components/HomeStars/index'
+import HomeStars from '../../../components/HomeStars/index'
 
 import styles from './styles'
 
@@ -39,7 +39,7 @@ export default function Rota() {
                 <AntDesign name="heart" size={35} color="red" />
               </TouchableOpacity>
             </View>
-            <Image style={styles.barHeaderImage} source={require('../../assets/home/barDoZe.png')} />
+            <Image style={styles.barHeaderImage} source={require('../../../assets/home/barDoZe.png')} />
             
             <View style={styles.barInfos}>
               <View>
@@ -53,9 +53,8 @@ export default function Rota() {
               <View style={styles.counter}>
                 <View style={styles.counterInfo}>
                   <MaterialCommunityIcons name="account-group" color="#FFCE39" size={30}/>
-                  <Text style={styles.counterInfoText}>153</Text> 
+                  <Text style={styles.counterInfoText}>153</Text>
                 </View>
-
 
                 <View style={styles.counterInfo}>
                   <AntDesign name="star" color="#FFCE39" size={30}/>
@@ -96,7 +95,7 @@ export default function Rota() {
 
               <View style={styles.favoritesCard}>
                 <View style={styles.favoritesCardHeader}>
-                  <Image style={styles.favoritesImage} source={require('../../assets/details/andreProfiles.jpg')} />
+                  <Image style={styles.favoritesImage} source={require('../../../assets/details/andreProfiles.jpg')} />
                   <Text style={styles.favoritesName}>André Fuzi</Text>
                 </View>
                 <View style={styles.favoritesCardFooter}>

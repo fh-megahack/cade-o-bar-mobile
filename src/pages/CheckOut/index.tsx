@@ -37,8 +37,7 @@ export default function CheckOut() {
         
         <Text style={styles.textExit}>Você está prestes a sair</Text>
 
-        <Text style={{marginTop: 20, color: 'white'}}>Antes de fazer o Check-out, que tal</Text>
-        <Text style={{color: 'white'}}>avaliar a sua experiencia?</Text>
+        <Text style={styles.textDescription}>Antes de fazer o Check-out, que tal avaliar a sua experiencia?</Text>
         
         <View style={{marginTop: '2%'}}>
           <AirbnbRating />

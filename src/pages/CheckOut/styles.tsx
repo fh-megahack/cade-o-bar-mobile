@@ -11,23 +11,22 @@ export default StyleSheet.create({
         backgroundColor: '#F3CA40',
         width: '100%',
         height: '15%',
+        marginLeft: '10%',
         marginBottom: 'auto',
         alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     arrowLeft: {
-        marginRight: 'auto',
-        marginLeft: 20,
-        marginTop: 25
+        marginLeft: '5%',
+        marginTop: '5%',
     },
     textTop: {
-        marginTop: 20,
         marginRight: 'auto',
-        marginLeft: -40,
+        marginLeft: '20%',
+        marginTop: '4%',
         color: '#FFF',
-        fontWeight: 'bold',
-        fontSize: 20
+        fontFamily: 'OpenSans_600SemiBold',
+        fontSize: 20,
     },
     containerBottom: {
         backgroundColor: '#37323E',
@@ -47,20 +46,30 @@ export default StyleSheet.create({
         elevation: 24,
     },
     textExit: {
-        marginTop: 30,
-        fontWeight: 'bold',
+        marginTop: '5%',
+        fontFamily: 'OpenSans_600SemiBold',
         fontSize: 26,
         color: 'white',
         textAlign: 'center'
     },
+
+    textDescription: {
+        width: '80%',
+        marginTop: '5%',
+        fontFamily: 'OpenSans_300Light',
+        fontSize: 18,
+        color: 'white',
+        textAlign: 'center'
+    },
+
     action: {
-        marginTop: 40,
+        marginTop: '10%',
         backgroundColor: '#28242D',
         flexDirection:'row',
         borderColor: '#28242D',
         borderBottomColor:'#fff',
         width: '90%',
-        height: 140,
+        height: '20%',
         alignItems: 'center',
     },
     textInput: {
@@ -78,7 +87,7 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 10,
         overflow: 'hidden',
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: '10%',
         marginLeft: 'auto',
         shadowColor: "#000",
         shadowOffset: {
@@ -96,6 +105,5 @@ export default StyleSheet.create({
         textAlign: 'center',
         color: '#FFF',
         fontSize: 18,
-        marginRight: 20
     },
 })
