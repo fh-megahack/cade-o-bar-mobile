@@ -48,7 +48,7 @@ export default StyleSheet.create({
 
   mapMarker: {
     width: 90,
-    height: 65,
+    height: 65
   },
 
   mapMarkerContainer: {
@@ -76,6 +76,6 @@ export default StyleSheet.create({
   },
 
   footer: {
-    flex: 2 
+    flex: 2
   }
 });
