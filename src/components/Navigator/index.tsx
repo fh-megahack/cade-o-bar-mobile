@@ -6,18 +6,36 @@ import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles'
 
-const BottomBar = () => {
+interface User {
+  id: number
+  image: string
+  name: string
+  email: string
+  whatsapp: string
+  city: string
+  uf: string
+  password: string
+  url_image: string
+}
+
+interface Props {
+  userInfo: User
+}
+
+const BottomBar = (props: Props) => {
+  const { userInfo } = props
 
   const navigation = useNavigation();
 
   function handleNavigateToProfile() {
-    navigation.navigate('Profile')
+
+    navigation.navigate('Profile', { userInfo })
   }
   function handleNavigateToCheckIn() {
-    navigation.navigate('CheckIn')
+    navigation.navigate('CheckIn', { userInfo })
   }
   function handleNavigateToRank() {
-    navigation.navigate('Rank')
+    navigation.navigate('Rank', { userInfo })
   }
 
   return (
