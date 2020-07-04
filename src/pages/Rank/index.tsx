@@ -91,7 +91,7 @@ export default function Rota() {
       </ScrollView>
 
     </View >
-    <View style={styles.footer}>
+    <View>
         <BottomBar />
     </View>
     </>
