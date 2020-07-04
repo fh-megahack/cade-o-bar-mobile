@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, Image, Animated, SafeAreaView, ScrollView } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 import api from '../../../services/api'
-import HomeStars from '../../../components/HomeStars/index'
 import styles from './styles'
 
 interface Params {
@@ -19,17 +19,39 @@ interface Bar {
   uf: string;
   url_image: string;
   website: string;
+  ratings: Rating[]
+  products: Product[]
+}
+
+interface Rating {
+  id: number;
+  user_name: string;
+  comment: string;
+  user_image: string;
+  rating: number;
+}
+
+interface Product {
+  id: number;
+  product_name: string;
+  url_image: string;
 }
 
 
 export default function Rota() {
 
+  function handleSelectItem() {
+
+  }
+
   const [data, setData] = useState<Bar>({} as Bar);
+  const [ratings, setRatings] = useState<Rating[]>([]);
+  const [products, setProduct] = useState<Product[]>([]);
+  const [discovery, setDiscovery] = useState<Number>(0);
+  const [avRating, setAvRating] = useState<String>('')
 
   const navigation = useNavigation();
   const route = useRoute();
-  
-  const translateY = new Animated.Value(0)
 
   function handleNavigationBack() {
     navigation.goBack()
@@ -43,12 +65,45 @@ export default function Rota() {
     });
   },[]);
 
+  useEffect(() => {
+    api.get(`rating/${routeParam.bar_id}`).then(response => {
+      setRatings(response.data);
+    });
+  },[]);
+
+  useEffect(() => {
+    api.get(`product/${routeParam.bar_id}`).then(response => {
+      setProduct(response.data);
+    });
+  },[]);
+
+  useEffect(() => {
+    api.get(`discovery/bar/${routeParam.bar_id}`).then(response => {
+      if (response && response.data) {
+        
+        setDiscovery(response.data.length)
+      }
+    });
+  },[]);
+
+  useEffect(() => {
+    const average = ratings.reduce((acc, el) => {
+      return acc + el.rating
+    }, 0)
+    const result = (average/(ratings.length)).toFixed(1)
+    setAvRating(result)
+  },[ratings]);
+
   if (!data) {
     return null;
   }
 
   return (
     <>
+    <StatusBar 
+      backgroundColor="#f3ca40"
+      style="light"
+    />
     <SafeAreaView>
       <ScrollView>
     
@@ -84,12 +139,12 @@ export default function Rota() {
               <View style={styles.counter}>
                 <View style={styles.counterInfo}>
                   <MaterialCommunityIcons name="account-group" color="#FFCE39" size={30}/>
-                  <Text style={styles.counterInfoText}>153</Text>
+                  <Text style={styles.counterInfoText}>{discovery}</Text>
                 </View>
 
                 <View style={styles.counterInfo}>
                   <AntDesign name="star" color="#FFCE39" size={30}/>
-                  <Text style={styles.counterInfoText}>4.8</Text>
+                  <Text style={styles.counterInfoText}>{avRating}</Text>
                 </View>
               </View>
 
@@ -112,8 +167,20 @@ export default function Rota() {
           </View>
 
             <View style={styles.homeStars}>
-              <Text style={styles.homeStarsText}>Estrelas da casa</Text>
-              <HomeStars translateY={translateY} />
+              <Text style={styles.sectionTitle}>Estrelas da casa</Text>
+              
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 10 }} style={styles.slider}>
+              {products.map(product => (
+                <TouchableOpacity
+                  key={String(product.id)}
+                  style={styles.item}
+                  activeOpacity={0.7}
+                  onPress={() => { handleSelectItem() }}>
+                  <Image width={42} height={42} source={{ uri: product.url_image }} style={styles.itemImg} />
+                  <Text style={styles.itemTitle}>{product.product_name}</Text>
+                </TouchableOpacity>
+              ))}
+              </ScrollView>
             </View>
 
             <View style={styles.favorites}>
@@ -123,15 +190,20 @@ export default function Rota() {
               <Text style={styles.seeMore}>Ver Todas</Text>
             </View>
 
-              <View style={styles.favoritesCard}>
+            {ratings.map(rating => (
+              <View 
+              key={String(rating.id)}
+              style={styles.favoritesCard}
+              >
                 <View style={styles.favoritesCardHeader}>
-                  <Image style={styles.favoritesImage} source={require('../../../assets/details/andreProfiles.jpg')} />
-                  <Text style={styles.favoritesName}>André Fuzi</Text>
+                  <Image style={styles.favoritesImage} source={{ uri: rating.user_image }} />
+                  <Text style={styles.favoritesName}>{rating.user_name}</Text>
                 </View>
                 <View style={styles.favoritesCardFooter}>
-                  <Text numberOfLines={1} style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar!</Text>
+                <Text numberOfLines={1} style={styles.favoritesCardComment}>{rating.comment}</Text>
                 </View>
               </View>
+            ))}
             </View>
           </View>
         </View>

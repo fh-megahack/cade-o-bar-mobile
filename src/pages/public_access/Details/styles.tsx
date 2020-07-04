@@ -177,11 +177,38 @@ export default StyleSheet.create({
         width: '100%'
     },
 
-    homeStarsText: {
-        marginHorizontal: '3%',
+    sectionTitle: {
+        width: '100%',
+        paddingHorizontal: 10,
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 20,
+        marginBottom: 10,
         color: '#fff',
-        fontFamily: 'Roboto_500Medium',
-        fontSize: 18
+        marginTop: '3%',
+    },
+
+    slider: {
+        marginBottom: 20,
+    },
+
+    item: {
+        flex: 1,
+        flexDirection: 'column'
+    },
+
+    itemTitle: {
+        fontFamily: 'OpenSans_600SemiBold',
+        textAlign: 'center',
+        color: '#fff',
+        fontSize: 10,
+    },
+
+    itemImg: {
+        height: 140,
+        width: 140,
+        borderRadius: 8,
+        marginRight: 8,
+        resizeMode: 'cover'
     },
 
     favoritesTitle: {
@@ -208,7 +235,8 @@ export default StyleSheet.create({
     },
 
     favorites: {
-        marginTop: '2%'
+        marginTop: '2%',
+        marginBottom: '15%'
     },
 
     favoritesCard: {
