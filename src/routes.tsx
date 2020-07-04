@@ -25,12 +25,12 @@ export default function Navigation() {
             <Stack.Navigator headerMode="none" >
                 <Stack.Screen name="Login" component={Login} options={{ title: 'Login' }} />
                 <Stack.Screen name="Home" component={Home} options={{ title: 'Home' }} />
+                <Stack.Screen name="Profile" component={Profile} options={{ title: 'Profile' }} />
                 <Stack.Screen name="Rank" component={Rank} options={{ title: 'Rank' }} />
                 <Stack.Screen name="CheckIn" component={CheckIn} options={{ title: 'CheckIn' }} />
-                <Stack.Screen name="Profile" component={Profile} options={{ title: 'Profile' }} />
+                <Stack.Screen name="Roullete" component={Roullete} options={{ title: 'Roullete' }} />
                 <Stack.Screen name="Details" component={Details} options={{ title: 'Details' }} />
                 <Stack.Screen name="Discount" component={Discount} options={{ title: 'Discount' }} />
-                <Stack.Screen name="Roullete" component={Roullete} options={{ title: 'Roullete' }} />
                 <Stack.Screen name="CheckInSuccess" component={CheckInSuccess} options={{ title: 'CheckInSuccess' }} />
                 <Stack.Screen name="CheckOut" component={CheckOut} options={{ title: 'CheckOut' }} />
                 <Stack.Screen name="MapDetail" component={MapDetail} options={{ title: 'MapDetail' }} />

@@ -1,22 +1,50 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, Image, Animated, SafeAreaView, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { AntDesign, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
-
+import api from '../../../services/api'
 import HomeStars from '../../../components/HomeStars/index'
-
 import styles from './styles'
+
+interface Params {
+  bar_id: number;
+}
+
+interface Bar {
+  name: string;
+  street: string;
+  address_number: number;
+  neighborhood: string;
+  city: string;
+  uf: string;
+  url_image: string;
+  website: string;
+}
+
 
 export default function Rota() {
 
-  const translateY = new Animated.Value(0)
+  const [data, setData] = useState<Bar>({} as Bar);
 
   const navigation = useNavigation();
+  const route = useRoute();
+  
+  const translateY = new Animated.Value(0)
 
   function handleNavigationBack() {
     navigation.goBack()
+  }
+
+  const routeParam = route.params as Params;
+
+  useEffect(() => {
+    api.get(`bars/${routeParam.bar_id}`).then(response => {
+      setData(response.data);
+    });
+  },[]);
+
+  if (!data) {
+    return null;
   }
 
   return (
@@ -42,11 +70,11 @@ export default function Rota() {
                 <AntDesign name="heart" size={35} color="red" />
               </TouchableOpacity>
             </View>
-            <Image style={styles.barHeaderImage} source={require('../../../assets/home/barDoZe.png')} />
+            <Image style={styles.barHeaderImage} source={{ uri: data.url_image }} />
             
             <View style={styles.barInfos}>
               <View>
-                <Text style={styles.barHeaderTitle}>Bar do Pedro</Text>
+                <Text style={styles.barHeaderTitle}>{data.name}</Text>
               </View>
               <View style={styles.rating}>
                 <Text style={styles.infoText}>Descobertas</Text>
@@ -74,13 +102,12 @@ export default function Rota() {
 
             <View style={styles.barLocation}>
               <Entypo name="location" color="#F08A4B" size={18} />
-              <Text style={styles.barLocationText}>Rua Bonita, 111 - Vila Madalena, SP</Text>
+              <Text style={styles.barLocationText}>{data.street}, {data.address_number} - {data.neighborhood}, {data.uf}</Text>
             </View>
 
             <View style={styles.barLink}>
               <Entypo name="link" color="#F08A4B" size={18} />
-              <Text style={styles.barLinkText}>www.bardoze.com.br</Text>
-
+              <Text style={styles.barLinkText}>{data.website}</Text>
             </View>
           </View>
 
@@ -105,18 +132,8 @@ export default function Rota() {
                   <Text numberOfLines={1} style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar!</Text>
                 </View>
               </View>
-
-              <View style={styles.favoritesCard}>
-                <View style={styles.favoritesCardHeader}>
-                  <Image style={styles.favoritesImage} source={require('../../../assets/details/andreProfiles.jpg')} />
-                  <Text style={styles.favoritesName}>André Fuzi</Text>
-                </View>
-                <View style={styles.favoritesCardFooter}>
-                  <Text numberOfLines={1} style={styles.favoritesCardComment}>Um ótimo lugar, vale super a pena visitar!</Text>
-                </View>
-              </View>
             </View>
-        </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
