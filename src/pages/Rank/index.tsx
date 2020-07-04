@@ -1,99 +1,132 @@
-import React, { useState } from 'react';
-import styles from './styles'
-
-import { FlatList, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
+import React, { useState, useEffect } from 'react';
+import { Text, View, Image, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient';
-
-import { Feather as Icon } from '@expo/vector-icons';
+import { AntDesign as Icon } from '@expo/vector-icons';
 
 import BottomBar from '../../components/Navigator';
+import api from '../../services/api';
 
-export default function Rota() {
+import styles from './styles'
+
+interface User {
+  id: number
+  image: string
+  name: string
+  email: string
+  whatsapp: string
+  city: string
+  uf: string
+  password: string
+  url_image: string
+}
+interface Point {
+  position: number
+  total_points: number
+  rescue_points: number
+}
+interface Rank {
+  id: number
+  user_id: number
+  total_points: number
+  rescue_points: number
+  user_name: string
+  user_image: string
+}
+interface Params {
+  userInfo: User
+}
+
+export default function Rank() {
   const navigation = useNavigation()
+  const route = useRoute()
+
+  const { userInfo } = route.params as Params
+
+  const [userPoint, setUserPoint] = useState<Point>({} as Point)
+  const [rank, setRank] = useState<Rank[]>([])
+
+  useEffect(() => {
+    api.get(`points/${userInfo.id}`).then((resp) => {
+      if (resp && resp.data) {
+        setUserPoint(resp.data)
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    api.get('points').then((resp) => {
+      if (resp && resp.data) {
+        setRank(resp.data)
+      }
+    })
+  }, [])
 
   function handleNavigationBack() {
     navigation.goBack()
   }
 
-  const[userRank, setUserRank] = useState([
-    //database
-    { name: 'Zé do Deli', category: 'Mestre', points: '9999', photo: require('./../../assets/rank/userZe.png'), id: '1' },
-    { name: 'Pedro Augusto', category: 'Veterano', points: '1668', photo: require('./../../assets/rank/userpedro.png'), id: '2' },
-    { name: 'Matheus Oliveira', category: 'Esforçado', points: '1480', photo: require('./../../assets/rank/userMatheus.png'), id: '3' },
-    { name: 'André Fuzi', category: 'Calouro', points: '976', photo: require('./../../assets/rank/userAndre.png'), id: '4' },
-    { name: 'Zé do Deli', category: 'Mestre', points: '9999', photo: require('./../../assets/rank/userZe.png'), id: '5' },
-    { name: 'Pedro Augusto', category: 'Veterano', points: '1668', photo: require('./../../assets/rank/userpedro.png'), id: '6' },
-    { name: 'Matheus Oliveira', category: 'Esforçado', points: '1480', photo: require('./../../assets/rank/userMatheus.png'), id: '7' },
-    { name: 'André Fuzi', category: 'Calouro', points: '976', photo: require('./../../assets/rank/userAndre.png'), id: '8' }
-  ])
   return (
     <>
-    <View style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <View style={styles.container}>
 
-      <View style={styles.containerTop}>
-        <TouchableOpacity onPress={handleNavigationBack}>
-          <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        <TouchableOpacity onPress={handleNavigationBack} style={styles.header}>
+          <Icon name='arrowleft' size={24} color='#F3CA40' style={styles.headerIcon} />
+          <Text style={styles.headerText}>Rank</Text>
         </TouchableOpacity>
-        <Text style={styles.textTop}>Classificação</Text>
-      </View>
 
-      <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-
-        <View style={styles.containerBottom}>
-
+        <View style={styles.userBox}>
           <LinearGradient colors={['#F3CA40', '#F2AA46']} style={styles.rankBox}>
-
             <View style={styles.rankTop}>
-              <Text style={styles.rankTop1}>Sua Classificação</Text>
+              <Text style={styles.topTitle}>Sua Classificação</Text>
               <View style={styles.rankTop2}>
-                <Text style={styles.rankTop1}>1668</Text>
+                <Text style={styles.rankTop1}>{userPoint.total_points}</Text>
                 <Text style={styles.rankTop3}>+</Text>
               </View>
             </View>
-
             <View style={styles.rankBottom}>
-              <Text style={styles.rankBottomPosition}>2</Text>
-              <Image style={styles.userAvatar} source={require('./../../assets/rank/userpedro.png')} />
-              
-              <View style={styles.userRank}>
-                <Text style={styles.nameUserRank}>Pedro Augusto</Text>
-                <Text style={styles.categoryUserRank}>Veterano</Text>
-              </View>
+              <Text style={styles.rankBottomPosition}>{userPoint.position}</Text>
+              <Image style={styles.userAvatar} source={{ uri: userInfo.url_image }} />
+              <Text style={styles.nameUserRank}>{userInfo.name}</Text>
             </View>
-            
+
           </LinearGradient>
+        </View>
 
-        
-          <View style={styles.listRank}>
-            <View>
-              <Image style={styles.medalGold} source={require('./../../assets/rank/medalgold.png')} />
-              <Image style={styles.medalRank} source={require('./../../assets/rank/medalsilver.png')} />
-              <Image style={styles.medalRank} source={require('./../../assets/rank/medalbronze.png')} />
-            </View>
-            <FlatList
-              data={userRank}
-              renderItem={({ item }) => (
-                <View style={styles.userRankContainer}>
-                  <Image style={styles.userAvatar} source={item.photo} />
-                  <View style={styles.userRankData}>
-                    <Text style={styles.userRankName}>{item.name}</Text>
-                    <Text style={styles.userRankCategory}>{item.category}</Text>
-                  </View>
-                  <Text style={styles.userRankPoints}>{item.points}</Text>
-                  <Text style={styles.userRankAdd}>+</Text>
+        <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+          <View style={styles.containerBottom}>
+            {rank.map((user, index) => (
+              <View style={styles.rankItem} key={user.id}>
+                <View style={styles.rankBadge}>
+                  {index === 0 && (<Image source={require('./../../assets/rank/medalgold.png')} />)}
+                  {index === 1 && (<Image source={require('./../../assets/rank/medalsilver.png')} />)}
+                  {index === 2 && (<Image source={require('./../../assets/rank/medalbronze.png')} />)}
+                  {index > 2 && (<Text style={styles.rankPositionText}>{index + 1}</Text>)}
                 </View>
-              )}
-            />
-            </View>
+                <View style={styles.rankUserInfo}>
+                  <View style={styles.userRankNumber}>
+                    <Image style={styles.userAvatar} source={{ uri: user.user_image }} />
+                    <Text style={styles.userRankName}>{user.user_name}</Text>
+                  </View>
+                  <View style={styles.userRankNumber}>
+                    <Text style={styles.userRankPoints}>{user.total_points}</Text>
+                    <Text style={styles.userRankAdd}>+</Text></View>
+                </View>
+              </View>
+            ))}
           </View>
+          <View style={styles.space} />
+        </ScrollView>
 
-      </ScrollView>
-
-    </View >
-    <View>
-        <BottomBar />
-    </View>
+      </View >
+      <View>
+        <BottomBar userInfo={userInfo} />
+      </View>
     </>
   );
 };
