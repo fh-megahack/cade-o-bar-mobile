@@ -15,6 +15,7 @@ import Roullete from './pages/Roullete/index'
 import CheckIn from './pages/CheckIn/index'
 import CheckInSuccess from './pages/CheckInSuccess/index'
 import CheckOut from './pages/CheckOut/index'
+import MapDetail from './pages/public_access/Details/index'
 
 const Stack = createStackNavigator();
 
@@ -22,16 +23,17 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator headerMode="none" >
-                <Stack.Screen name="Login" component={Login} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="Home" component={Home} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="Rank" component={Rank} options={{ title: 'Classificação' }} />
-                <Stack.Screen name="CheckIn" component={CheckIn} options={{ title: 'Check-In' }} />
-                <Stack.Screen name="Profile" component={Profile} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="Details" component={Details} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="Discount" component={Discount} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="Roullete" component={Roullete} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="CheckInSuccess" component={CheckInSuccess} options={{ title: 'Perfil' }} />
-                <Stack.Screen name="CheckOut" component={CheckOut} options={{ title: 'Perfil' }} />
+                <Stack.Screen name="Login" component={Login} options={{ title: 'Login' }} />
+                <Stack.Screen name="Home" component={Home} options={{ title: 'Home' }} />
+                <Stack.Screen name="Profile" component={Profile} options={{ title: 'Profile' }} />
+                <Stack.Screen name="Rank" component={Rank} options={{ title: 'Rank' }} />
+                <Stack.Screen name="CheckIn" component={CheckIn} options={{ title: 'CheckIn' }} />
+                <Stack.Screen name="Roullete" component={Roullete} options={{ title: 'Roullete' }} />
+                <Stack.Screen name="Details" component={Details} options={{ title: 'Details' }} />
+                <Stack.Screen name="Discount" component={Discount} options={{ title: 'Discount' }} />
+                <Stack.Screen name="CheckInSuccess" component={CheckInSuccess} options={{ title: 'CheckInSuccess' }} />
+                <Stack.Screen name="CheckOut" component={CheckOut} options={{ title: 'CheckOut' }} />
+                <Stack.Screen name="MapDetail" component={MapDetail} options={{ title: 'MapDetail' }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

@@ -11,23 +11,21 @@ export default StyleSheet.create({
         backgroundColor: '#F3CA40',
         width: '100%',
         height: '15%',
+        marginLeft: '10%',
         marginBottom: 'auto',
         alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     arrowLeft: {
-        marginRight: 'auto',
-        marginLeft: 20,
-        marginTop: 25
+        marginLeft: '5%',
+        marginTop: '5%',
     },
     textTop: {
-        marginTop: 20,
         marginRight: 'auto',
-        marginLeft: -40,
+        marginLeft: '25%',
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
     },
     containerBottom: {
         backgroundColor: '#FFF',
@@ -48,15 +46,15 @@ export default StyleSheet.create({
     },
     textRoulette0: {
         fontSize: 26,
-        fontWeight: 'bold',
-        marginTop: 15
+        fontFamily: 'OpenSans_600SemiBold',
+        marginTop: '3%'
     },
     textRoulette1: {
+        textAlign: 'center',
         fontSize: 16,
-        marginTop: 15,
-    },
-    textRoulette2: {
-        fontSize: 16,
+        fontFamily: 'OpenSans_300Light',
+        width: '80%',
+        marginTop: '3%',
     },
     button: {
         backgroundColor: '#F3CA40',
@@ -67,7 +65,7 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 10,
         overflow: 'hidden',
         alignItems: 'center',
-        marginTop: 80,
+        marginTop: '20%',
         marginLeft: 'auto',
         shadowColor: "#000",
         shadowOffset: {
@@ -78,13 +76,12 @@ export default StyleSheet.create({
         shadowRadius: 6.68,
         
         elevation: 11,
+        paddingHorizontal: 30
     },
     buttonText: {
         flex: 1,
-        justifyContent: 'center',
-        textAlign: 'center',
         color: '#FFF',
         fontSize: 18,
-        marginRight: 20
+        textAlign: 'center'
     },
 });

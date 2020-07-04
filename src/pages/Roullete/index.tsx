@@ -1,17 +1,29 @@
 import React from 'react';
 import styles from './styles'
-
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Feather as Icon } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Roulette() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
+  function handleNavigateToDetails() {
+    navigation.navigate('Details')
+  }
+
   return (
     <View style={styles.container}>
 
       <View style={styles.containerTop}>
-        <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        <TouchableOpacity onPress={handleNavigateToHome}>
+          <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        </TouchableOpacity>
         <Text style={styles.textTop}>Roleta</Text>
       </View>
 
@@ -23,8 +35,7 @@ export default function Roulette() {
         </View>
 
         <Text style={styles.textRoulette0}>Ganhe Brindes!</Text>
-        <Text style={styles.textRoulette1}>Concorra a brindes e descontos para</Text>
-        <Text style={styles.textRoulette2}>poder usar neste estabelecimento!</Text>
+        <Text style={styles.textRoulette1}>Concorra a brindes e descontos para poder usar neste estabelecimento!</Text>
         
         <View>
           <Image
@@ -33,11 +44,8 @@ export default function Roulette() {
             />
         </View>
 
-        <TouchableOpacity style={styles.button}>
-              <Image
-                source={require('../../assets/login/iconBar.png')}
-                style={{width: 25, height: 25, marginLeft: 30}}
-              />
+        <TouchableOpacity style={styles.button} onPress={handleNavigateToDetails}>
+              <MaterialCommunityIcons name="location-enter" size={24} color="#fff" />
               <Text style={styles.buttonText}>
                 Ir para o Bar
               </Text>

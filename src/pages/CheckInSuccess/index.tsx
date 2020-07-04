@@ -1,41 +1,50 @@
 import React from 'react';
 import styles from './styles'
-
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Feather as Icon } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function CheckInSuccess() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
+  function handleNavigateToRoullete() {
+    navigation.navigate('Roullete')
+  }
+
   return (
     <View style={styles.container}>
 
       <View style={styles.containerTop}>
-        <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
-        <Text style={styles.textTop}>Check-In Success</Text>
+        <TouchableOpacity onPress={handleNavigateToHome}>
+          <Icon style={styles.arrowLeft} name="arrow-left" color="#FFF" size={30} />
+        </TouchableOpacity>
+        <Text style={styles.textTop}>Check-In Sucesso</Text>
       </View>
 
       <View style={styles.containerBottom}>
         <View style={styles.imageCheck}>
-          <Image
-            source={require('../../assets/login/success.png')}
-          />
+          <Ionicons name="ios-checkmark-circle-outline" size={102} color="#15880B" />
         </View>
 
         <Text style={styles.textCheck0}>Check-in Realizado</Text>
         <Text style={styles.textCheck1}>com Sucesso!</Text>
         
-        <Text style={styles.textCheck2}>Comece sua descobertas nesse</Text>
-        <Text>ambiente!</Text>
+        <Text style={styles.textCheck2}>Comece sua descobertas nesse ambiente!</Text>
         
-        <Text style={styles.textCheck3}>Você tem direito a uma rodada da</Text>
-        <Text>sorte, clique no botão abaixo e receba</Text>
-        <Text>um mimo! </Text>
+        <Text style={styles.textCheck3}>Você tem direito a uma rodada da sorte, clique no botão abaixo e receba um mimo!</Text>
 
         <View style={styles.imagePlay}>
-          <Image
-            source={require('../../assets/login/play.png')}
-          />
+          <TouchableOpacity onPress={handleNavigateToRoullete}>
+            <Image
+              source={require('../../assets/login/play.png')}
+            />
+          </TouchableOpacity>
         </View>
 
       </View>

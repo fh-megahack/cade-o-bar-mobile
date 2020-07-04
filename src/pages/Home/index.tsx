@@ -1,12 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps'
-import { StatusBar, View, Image, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StatusBar, View, Image, Text, Alert } from 'react-native';
+import * as Location from 'expo-location';
+import api from '../../services/api';
 
 // Estilos
 import styles from './styles'
 import BottomBar from '../../components/Navigator';
 
+
+interface Bar {
+  id: number;
+  url_image: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
+interface User {
+  name: string;
+  image: string;
+}
+
 export default function Home() {
+  const [bars, setBars] = useState<Bar[]>([]);
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
+
+  useEffect(() => {
+    async function loadPosition() {
+      const { status } = await Location.requestPermissionsAsync();
+
+      if(status !== 'granted') {
+        Alert.alert('Atenção', 'Precisamos de permissão para obter a sua localização');
+        return;
+      }
+
+      const location = await Location.getCurrentPositionAsync();
+
+      const { latitude, longitude } = location.coords;
+
+      setInitialPosition([latitude, longitude])
+    }
+
+    loadPosition();
+  }, [])
+
+  useEffect(() => {
+    api.get('bars').then(response => {
+      setBars(response.data);
+    })
+  }, []);
+
+  const navigation = useNavigation();
+
+  function handleNavigateToMapDetail(id: number) {
+    navigation.navigate('MapDetail', { bar_id: id })
+  }
+
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -16,69 +67,41 @@ export default function Home() {
           <Image style={styles.profileImage} source={require('../../assets/home/profilePedro.png')} />
           <View>
             <Text style={styles.welcomeText}>Olá <Text style={styles.welcomeTextName}>Pedro</Text>,</Text>
-            <Text style={styles.welcomeText}>Que tal descobrir novas experiencias hoje? </Text>
+            <Text style={styles.welcomeText}>Que tal descobrir novas experiências hoje? </Text>
           </View>
         </View>
 
 
         <View style={styles.mapContainer}>
-          <MapView
+          { initialPosition[0] !== 0 && (
+            <MapView 
             style={styles.map}
+            loadingEnabled={initialPosition[0] === 0}
             initialRegion={{
-              latitude: -23.620960,
-              longitude: -46.698819,
+              latitude: initialPosition[0],
+              longitude: initialPosition[1],
               latitudeDelta: 0.014,
               longitudeDelta: 0.014,
             }}
           >
-            <Marker
-              style={styles.mapMarker}
-              coordinate={{
-                latitude: -23.620960,
-                longitude: -46.698819,
-              }}>
-              <View style={styles.mapMarkerContainer}>
-                <Image style={styles.mapMarkerImage} source={require('../../assets/home/barDoZe.png')} />
-                <Text style={styles.mapMarkerTitle}>Bar do Zé</Text>
-              </View>
-            </Marker>
 
+            {bars.map(bar => (
             <Marker
+              key={String(bar.id)}
+              onPress={() => handleNavigateToMapDetail(bar.id)}
               style={styles.mapMarker}
               coordinate={{
-                latitude: -23.626945,
-                longitude: -46.692290,
+                latitude: bar.latitude, 
+                longitude: bar.longitude,
               }}>
               <View style={styles.mapMarkerContainer}>
-                <Image style={styles.mapMarkerImage} source={require('../../assets/home/barDoPedro.png')} />
-                <Text style={styles.mapMarkerTitle}>Bar do Pedro</Text>
+                <Image style={styles.mapMarkerImage} source={{uri: bar.url_image }} />
+                <Text style={styles.mapMarkerTitle}>{bar.name}</Text>
               </View>
             </Marker>
-
-            <Marker
-              style={styles.mapMarker}
-              coordinate={{
-                latitude: -23.625401,
-                longitude: -46.702139,
-              }}>
-              <View style={styles.mapMarkerContainer}>
-                <Image style={styles.mapMarkerImage} source={require('../../assets/home/barDoFuzi.png')} />
-                <Text style={styles.mapMarkerTitle}>Bar do Fuzi</Text>
-              </View>
-            </Marker>
-
-            <Marker
-              style={styles.mapMarker}
-              coordinate={{
-                latitude: -23.614234,
-                longitude: -46.691110,
-              }}>
-              <View style={styles.mapMarkerContainer}>
-                <Image style={styles.mapMarkerImage} source={require('../../assets/home/barDoMatheus.png')} />
-                <Text style={styles.mapMarkerTitle}>Bar do Matheus</Text>
-              </View>
-            </Marker>
+            ))}
           </MapView>
+          )}
         </View>
 
         <BottomBar />

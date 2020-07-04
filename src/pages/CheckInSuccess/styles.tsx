@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native'
-import { withTheme } from 'styled-components';
 
 export default StyleSheet.create({
     container: {
@@ -12,20 +11,18 @@ export default StyleSheet.create({
         backgroundColor: '#F3CA40',
         width: '100%',
         height: '15%',
+        marginLeft: '10%',
         marginBottom: 'auto',
         alignItems: 'center',
-        justifyContent: 'center',
         flexDirection: 'row'
     },
     arrowLeft: {
-        marginRight: 'auto',
-        marginLeft: 20,
-        marginTop: 25
+        marginLeft: '5%',
+        marginTop: '5%',
     },
     textTop: {
-        marginTop: 20,
         marginRight: 'auto',
-        marginLeft: -40,
+        marginLeft: '10%',
         color: '#FFF',
         fontWeight: 'bold',
         fontSize: 20
@@ -39,7 +36,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         shadowColor: "#000",
         shadowOffset: {
-            width: 10,
+            width: 10, 
             height: 50,
         },
         shadowOpacity: 1.0,
@@ -48,28 +45,33 @@ export default StyleSheet.create({
         elevation: 24
     },
     imageCheck: {
-        marginTop: 40
+        marginTop: '9%'
     },
     textCheck0: {
-        fontWeight: 'bold' ,
+        fontFamily: 'OpenSans_600SemiBold',
         fontSize: 20,
         textAlign: 'center',
-        marginTop: 15
+        marginTop: '5%'
     },
     textCheck1: {
-        fontWeight: 'bold' ,
+        fontFamily: 'OpenSans_600SemiBold',
         fontSize: 20,
         textAlign: 'center'
     },
     textCheck2: {
         textAlign: 'center',
-        marginTop: 15
+        fontSize: 16,
+        marginTop: '5%',
+        fontFamily: 'OpenSans_300Light',
+        width: '70%'
     },
     textCheck3: {
         textAlign: 'center',
-        marginTop: 150
+        marginTop: '40%',
+        width: '70%',
+        fontFamily: 'OpenSans_300Light',
     },
     imagePlay: {
-        marginTop: 40
+        marginTop: '5%',
     }
 });

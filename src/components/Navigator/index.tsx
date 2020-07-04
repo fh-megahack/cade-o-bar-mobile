@@ -23,23 +23,23 @@ const BottomBar = () => {
   return (
     <View>
       <View style={styles.container}>
-        <View style={[styles.col1, {borderTopRightRadius: 200}]}>
-            <TouchableOpacity onPress={handleNavigateToRank}>
-                <MaterialCommunityIcons name="podium-gold" size={30} color="#f3ca40" />
-            </TouchableOpacity>
+        <View style={[styles.col1, { borderTopRightRadius: 200 }]}>
+          <TouchableOpacity onPress={handleNavigateToRank}>
+            <MaterialCommunityIcons name="podium-gold" size={30} color="#fff" />
+          </TouchableOpacity>
         </View>
 
-        <View style={[styles.col1, {borderTopLeftRadius: 200}]}>
-            <TouchableOpacity onPress={handleNavigateToProfile}>
-                <AntDesign name="user" size={30} color="#f3ca40" />
-            </TouchableOpacity>
+        <View style={[styles.col1, { borderTopLeftRadius: 200 }]}>
+          <TouchableOpacity onPress={handleNavigateToProfile}>
+            <AntDesign name="user" size={30} color="#fff" />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.center} />
-      
+
       <View style={styles.volumnCon}>
         <TouchableOpacity onPress={handleNavigateToCheckIn}>
-            <AntDesign name="qrcode" size={30} color="#37323e" />
+          <AntDesign name="qrcode" size={40} color="#37323e" />
         </TouchableOpacity>
       </View>
     </View>

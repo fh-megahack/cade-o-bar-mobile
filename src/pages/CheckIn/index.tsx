@@ -1,37 +1,64 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { StatusBar, Text, View, TouchableOpacity } from 'react-native';
+import { BarCodeScanner } from 'expo-barcode-scanner';
+import { AntDesign } from '@expo/vector-icons';
 
-export default function Rota() {
+// Estilos
+import styles from './styles'
+import BottomBar from '../../components/Navigator';
+
+export default function CheckIn() {
+
+  const navigation = useNavigation();
+
+  function handleNavigateToHome() {
+    navigation.navigate('Home')
+  }
+
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  const handleBarCodeScanned = () => {
+    setScanned(true);
+
+    navigation.navigate('CheckInSuccess')
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Template <Text style={styles.name}>Cade o bar?</Text></Text>
-      <Text style={styles.description}>Bem Vindo(a) ao Check-in!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.container}>
+
+        <View style={styles.header}>
+          <TouchableOpacity onPress={handleNavigateToHome} >
+            <AntDesign name="arrowleft" size={24} color="#fff" />
+          </TouchableOpacity>
+          <View>
+            <Text style={styles.welcomeText}>Certo <Text style={styles.welcomeTextName}>Pedro</Text>,</Text>
+            <Text style={styles.welcomeText}>Escaneie o Código QR e explore esse ambiente incrível!</Text>
+          </View>
+        </View>
+
+
+        <View style={styles.mapContainer}>
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+            style={styles.scanner}
+          />
+        </View>
+
+        <BottomBar />
+
+      </View>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#37323e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#fff',
-    fontWeight: "bold",
-  },
-  name: {
-    color: '#f3ca40',
-    fontWeight: "bold",
-  },
-  description: {
-    top: 10,
-    color: '#BFBDC1',
-    fontWeight: '100',
-    width: 300,
-    textAlign: 'center'
-  },
-});
