@@ -87,11 +87,16 @@ export default function Rota() {
   },[]);
 
   useEffect(() => {
-    const average = ratings.reduce((acc, el) => {
-      return acc + el.rating
-    }, 0)
-    const result = (average/(ratings.length)).toFixed(1)
-    setAvRating(result)
+
+    if (ratings && ratings.length) {
+      const average = ratings.reduce((acc, el) => {
+        return acc + el.rating
+      }, 0)
+      const result = (average/(ratings.length)).toFixed(1)
+      setAvRating(result)
+    }else{
+      setAvRating('--')
+    }
   },[ratings]);
 
   if (!data) {
@@ -209,7 +214,7 @@ export default function Rota() {
         </View>
       </ScrollView>
     </SafeAreaView>
-    
+
       </>
   );
 }
