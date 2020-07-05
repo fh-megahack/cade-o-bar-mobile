@@ -56,6 +56,13 @@ export default function User() {
   const [point, setPoint] = useState<Point>({} as Point)
   const [favorites, setFavorites] = useState<Favorite[]>([])
   const [discoveries, setDiscoveries] = useState<Discovery[]>([])
+  const [totalDiscoveries, setTotalDiscoveries] = useState('-')
+
+  const emptyBlock = (text: string) => {
+    return (
+      <Text style={styles.epmtyBlock}>Não tem {text} até o momento</Text>
+    )
+  }
 
   function handleNavigationBack() {
     navigation.goBack()
@@ -81,6 +88,7 @@ export default function User() {
     api.get(`discovery/${userInfo.id}`).then((resp) => {
       if (resp && resp.data) {
         setDiscoveries(resp.data)
+        setTotalDiscoveries(resp.data.length)
       }
     })
   }, [])
@@ -90,7 +98,11 @@ export default function User() {
   }
 
   function handleBarClick(bar_id: number) {
-    navigation.navigate('MapDetail', { bar_id })
+    api.get(`bars/${bar_id}`).then((result) => {
+      if (result && result.data && result.data.hasOwnProperty('name')) {
+        navigation.navigate('MapDetail', { userInfo, barInfo: result.data })
+      }
+    })
   }
 
   return (
@@ -111,7 +123,7 @@ export default function User() {
             <View style={styles.userBoard}>
               <View style={styles.userBoardColumn}>
                 <Text style={styles.userInfoTitle}>Descobertas</Text>
-                <Text style={styles.userInfoContent}>17</Text>
+                <Text style={styles.userInfoContent}>{totalDiscoveries}</Text>
               </View>
               <View style={styles.userBoardColumn}>
                 <Text style={styles.userInfoTitle}>Pontuação</Text>
@@ -130,32 +142,39 @@ export default function User() {
               </TouchableOpacity>
             </View>
             <Text style={styles.sectionTitle}>Últimas Descobertas</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20 }} style={styles.slider}>
-              {favorites.map((fav) => (
-                <TouchableOpacity
-                  key={fav.id}
-                  style={styles.item}
-                  activeOpacity={0.7}
-                  onPress={() => { handleBarClick(fav.bar_id) }}>
-                  <Image width={42} height={42} source={{ uri: fav.bar_image }} style={styles.itemImg} />
-                  <Text style={styles.itemTitle}>{fav.bar_name}</Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
+            {discoveries && discoveries.length ?
+
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20 }} style={styles.slider}>
+                {discoveries.map((fav, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={styles.item}
+                    activeOpacity={0.7}
+                    onPress={() => { handleBarClick(fav.bar_id) }}>
+                    <Image width={42} height={42} source={{ uri: fav.bar_image }} style={styles.itemImg} />
+                    <Text style={styles.itemTitle}>{fav.bar_name}</Text>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+              : emptyBlock('nenhuma descoberta')}
+
             <View style={styles.separator} />
             <Text style={styles.sectionTitle}>Favoritos</Text>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20 }}>
-              {discoveries.map((disc) => (
-                <TouchableOpacity
-                  key={disc.id}
-                  style={styles.item}
-                  activeOpacity={0.7}
-                  onPress={() => { handleBarClick(disc.bar_id) }}>
-                  <Image width={42} height={42} source={{ uri: disc.bar_image }} style={styles.itemImg} />
-                  <Text style={styles.itemTitle}>{disc.bar_name}</Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
+            {favorites && favorites.length ?
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20 }}>
+                {favorites.map((disc, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={styles.item}
+                    activeOpacity={0.7}
+                    onPress={() => { handleBarClick(disc.bar_id) }}>
+                    <Image width={42} height={42} source={{ uri: disc.bar_image }} style={styles.itemImg} />
+                    <Text style={styles.itemTitle}>{disc.bar_name}</Text>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
+              : emptyBlock('nenhum favorito')}
+
           </View>
         </ScrollView>
       </View>

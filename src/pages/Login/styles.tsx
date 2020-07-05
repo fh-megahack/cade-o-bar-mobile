@@ -10,13 +10,13 @@ export default StyleSheet.create({
   top: {
     flex: 1,
     alignItems: 'center',
-    position: 'relative'
+    position: 'relative',
   },
 
   footer: {
-    flex: 0.9,
+    flex: 1,
     paddingHorizontal: 25,
-    paddingBottom: 10,
+    paddingBottom: 30,
     paddingTop: 50,
   },
 
@@ -24,13 +24,6 @@ export default StyleSheet.create({
     resizeMode: 'contain',
     width: '100%',
     marginTop: 30
-  },
-
-  imageWave: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    left: 0,
-    top: '60%',
   },
 
   action: {

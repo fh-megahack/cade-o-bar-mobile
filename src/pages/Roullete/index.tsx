@@ -36,9 +36,27 @@ interface Bar {
   products: ProductDescription[]
   ratings: RatingFull[]
 }
+interface User {
+  id: number
+  image: string
+  name: string
+  email: string
+  whatsapp: string
+  city: string
+  uf: string
+  password: string
+  url_image: string
+  points: Point
+}
+
+interface Point {
+  user_id: number
+  total_points: number
+  rescue_points: number
+}
 
 interface Params {
-  userId: number
+  userInfo: User
   barInfo: Bar
 }
 
@@ -46,9 +64,8 @@ export default function Roulette() {
   const navigation = useNavigation()
   const route = useRoute()
 
-  const { userId, barInfo } = route.params as Params
+  const { userInfo, barInfo } = route.params as Params
 
-  console.log('---------------', barInfo)
   const images = [
     require('../../assets/roleta/item-1.png'),
     require('../../assets/roleta/item-2.png'),
@@ -68,7 +85,7 @@ export default function Roulette() {
 
   function handleNavigateToDetails() {
     setModalVisible(false)
-    navigation.navigate('Details', { barInfo, userId })
+    navigation.navigate('Details', { barInfo, userId: userInfo.id })
   }
 
   return (
