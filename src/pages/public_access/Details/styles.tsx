@@ -197,9 +197,8 @@ export default StyleSheet.create({
     },
 
     homeStars: {
-        marginHorizontal: '3%',
-        marginTop: '5%',
-        width: '100%'
+        marginTop: 10,
+        width: '100%',
     },
 
     homeStarsText: {
@@ -233,7 +232,7 @@ export default StyleSheet.create({
     },
 
     favorites: {
-        marginTop: '2%'
+        marginTop: 10
     },
 
     favoritesCard: {
@@ -319,12 +318,20 @@ export default StyleSheet.create({
         marginBottom: 20,
     },
     spaceBottom: {
-        height: 80
+        height: 100
     },
     footer: {
         position: 'absolute',
         bottom: 0,
         left: 0,
         width: '100%',
+    },
+    epmtyBlock: {
+        color: 'white',
+        backgroundColor: '#211D27',
+        width: '90%',
+        alignSelf: 'center',
+        paddingVertical: 20,
+        paddingHorizontal: 10,
     }
 });

@@ -1,52 +1,51 @@
 import { StyleSheet } from 'react-native'
+import Constants from 'expo-constants'
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F3CA40',
-        alignItems: 'center',
-        justifyContent: 'center'
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#f3ca40',
     },
-    containerTop: {
-        backgroundColor: '#F3CA40',
-        width: '100%',
-        height: '15%',
-        marginLeft: '10%',
-        marginBottom: 'auto',
-        alignItems: 'center',
+    header: {
         flexDirection: 'row',
+        paddingHorizontal: 0,
+        paddingVertical: 16,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: "relative"
     },
-    arrowLeft: {
-        marginLeft: '5%',
-        marginTop: '5%',
+    headerIcon: {
+        position: 'absolute',
+        left: 24
     },
-    textTop: {
-        marginRight: 'auto',
-        marginLeft: '20%',
-        marginTop: '4%',
-        color: '#FFF',
+    headerText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: "bold",
         fontFamily: 'OpenSans_600SemiBold',
-        fontSize: 20,
+        fontSize: 22,
     },
     containerBottom: {
+        flex: 1,
         backgroundColor: '#37323E',
         width: '100%',
-        height: '85%',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         alignItems: 'center',
+        justifyContent: 'space-between',
         shadowColor: "#000",
         shadowOffset: {
-            width: 10,
-            height: 50,
+            width: 0,
+            height: 6,
         },
-        shadowOpacity: 1.0,
-        shadowRadius: 16.00,
-
+        shadowOpacity: 1.43,
+        shadowRadius: 9.51,
         elevation: 24,
     },
     textExit: {
-        marginTop: '5%',
+        marginTop: 5,
         fontFamily: 'OpenSans_600SemiBold',
         fontSize: 26,
         color: 'white',
@@ -55,25 +54,23 @@ export default StyleSheet.create({
 
     textDescription: {
         width: '80%',
-        marginTop: '5%',
+        marginTop: 10,
         fontFamily: 'OpenSans_300Light',
-        fontSize: 18,
+        fontSize: 16,
         color: 'white',
         textAlign: 'center'
     },
-
     action: {
-        marginTop: '10%',
+        marginTop: 20,
         backgroundColor: '#28242D',
-        flexDirection:'row',
+        flexDirection: 'row',
         borderColor: '#28242D',
-        borderBottomColor:'#fff',
+        borderBottomColor: '#fff',
         width: '90%',
         height: '20%',
         alignItems: 'center',
     },
     textInput: {
-        marginBottom: 'auto',
         padding: 20,
         color: 'white',
         width: '100%',
@@ -87,7 +84,7 @@ export default StyleSheet.create({
         borderBottomLeftRadius: 10,
         overflow: 'hidden',
         alignItems: 'center',
-        marginTop: '10%',
+        marginTop: 20,
         marginLeft: 'auto',
         shadowColor: "#000",
         shadowOffset: {
@@ -96,8 +93,6 @@ export default StyleSheet.create({
         },
         shadowOpacity: 0.36,
         shadowRadius: 6.68,
-        
-        elevation: 11,
     },
     buttonText: {
         flex: 1,
@@ -106,4 +101,89 @@ export default StyleSheet.create({
         color: '#FFF',
         fontSize: 18,
     },
+    sectionBottom: {
+        width: '100%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    content: {
+        flex: 1,
+        width: '100%',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+        backgroundColor: "rgba(0, 0, 0, 0.6)",
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+        width: 250
+    },
+    openButton: {
+        backgroundColor: "#577590",
+        borderColor: '#577590',
+        borderWidth: 2,
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        width: 100,
+        height: 40,
+        alignItems: 'center'
+    },
+    buttonCancel: {
+        backgroundColor: "#fff",
+        borderColor: '#577590',
+        borderWidth: 2,
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        width: 100,
+        height: 40
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalTextHead: {
+        fontSize: 16,
+        marginBottom: 20,
+        textAlign: "center",
+        fontFamily: 'OpenSans_600SemiBold',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+        fontFamily: 'OpenSans_300Light',
+    },
+    modalTextPoint: {
+        fontFamily: 'OpenSans_600SemiBold',
+        fontSize: 16,
+        color: '#f08a4b'
+    },
+    modalButtons: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    }
 })

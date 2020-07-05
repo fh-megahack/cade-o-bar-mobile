@@ -198,5 +198,13 @@ export default StyleSheet.create({
     left: 0,
     width: '100%',
     backgroundColor: '#37323E'
+  },
+  epmtyBlock: {
+    color: '#000',
+    backgroundColor: '#ddd',
+    width: '90%',
+    alignSelf: 'center',
+    paddingVertical: 20,
+    paddingHorizontal: 10,
   }
 });

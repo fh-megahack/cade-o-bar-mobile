@@ -61,13 +61,19 @@ export default function Rota() {
 
   }
   const [discovery, setDiscovery] = useState<Number>(0);
-  const [avRating, setAvRating] = useState<String>('')
+  const [avRating, setAvRating] = useState<String>('-')
 
   const navigation = useNavigation();
   const route = useRoute();
 
   function handleNavigationBack() {
     navigation.goBack()
+  }
+
+  const emptyBlock = (text: string) => {
+    return (
+      <Text style={styles.epmtyBlock}>Não temos {text} até o momento</Text>
+    )
   }
 
   const { barInfo, userInfo } = route.params as Params;
@@ -82,7 +88,6 @@ export default function Rota() {
   }, []);
 
   useEffect(() => {
-
     if (barInfo.ratings && barInfo.ratings.length) {
       const average = barInfo.ratings.reduce((acc, el) => {
         return acc + el.rating
@@ -156,17 +161,19 @@ export default function Rota() {
             </View>
 
             <View style={styles.homeStars}>
-              <Text style={styles.sectionTitle}>Estrelas da casa</Text>
+              <Text style={{ ...styles.sectionTitle, paddingHorizontal: 20 }}>Estrelas da casa</Text>
 
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 10 }} style={styles.slider}>
-                {barInfo.products.map((product, index) => (
-                  <View
-                    key={String(index)}>
-                    <Image width={42} height={42} source={{ uri: product.url_image }} style={styles.itemImg} />
-                    <Text style={styles.itemTitle}>{product.name}</Text>
-                  </View>
-                ))}
-              </ScrollView>
+              {barInfo.products && barInfo.products.length ?
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 10 }} style={styles.slider}>
+                  {barInfo.products && barInfo.products.length && barInfo.products.map((product, index) => (
+                    <View
+                      key={String(index)}>
+                      <Image width={42} height={42} source={{ uri: product.url_image }} style={styles.itemImg} />
+                      <Text style={styles.itemTitle}>{product.name}</Text>
+                    </View>
+                  ))}
+                </ScrollView>
+                : emptyBlock('nenhum produto')}
             </View>
 
             <View style={styles.favorites}>
@@ -175,7 +182,7 @@ export default function Rota() {
                 <Text style={styles.seeMore}>Ver Todas</Text>
               </View>
 
-              {barInfo.ratings.map(rating => (
+              {(barInfo.ratings && barInfo.ratings.length) ? barInfo.ratings.map(rating => (
                 <View
                   key={String(rating.id)}
                   style={styles.favoritesCard}
@@ -188,7 +195,8 @@ export default function Rota() {
                     <Text numberOfLines={1} style={styles.favoritesCardComment}>{rating.comment}</Text>
                   </View>
                 </View>
-              ))}
+              )) : emptyBlock('nenhuma avaliação')}
+
             </View>
             <View style={styles.spaceBottom} />
           </View>
