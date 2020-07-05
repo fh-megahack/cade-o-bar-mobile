@@ -16,24 +16,43 @@ import { Feather as Icon } from '@expo/vector-icons';
 import styles from './styles'
 
 export default function Login() {
-  
-  const[email, setEmail] = useState('')
-  const[password, setPassword] = useState('')
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const navigation = useNavigation();
 
   function handleSubmit() {
-
-    api.post('/login', {
-      email: email,
-      password: password
-    })
-    .then(function (response) {
-      navigation.navigate('Home', {userInfo: response.data});
-    })
-    .catch(function (error) {
-      console.log(error);
+    navigation.navigate('Home', {
+      userInfo: {
+        "id": 1,
+        "image": "avatar-pedro.jpeg",
+        "name": "Pedro Augusto",
+        "email": "pedro@teste.com",
+        "whatsapp": "1199991111",
+        "city": "São Paulo",
+        "uf": "SP",
+        "password": "pedro123",
+        "url_image": "http://192.168.1.137:3333/images/avatar-pedro.jpeg",
+        "points": {
+          "id": 1,
+          "user_id": 1,
+          "total_points": 3680,
+          "rescue_points": 520
+        }
+      }
     });
+
+    // api.post('/login', {
+    //   email: email,
+    //   password: password
+    // })
+    //   .then(function (response) {
+    //     navigation.navigate('Home', { userInfo: response.data });
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   }
 
   return (

@@ -36,15 +36,12 @@ interface Params {
 
 export default function Home() {
   const [bars, setBars] = useState<Bar[]>([]);
-  const [user, setUser] = useState<User>({} as User);
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
-  
+
   const route = useRoute()
   const navigation = useNavigation()
 
   const { userInfo } = route.params as Params
-  console.log(userInfo)
-
   useEffect(() => {
     async function loadPosition() {
       const { status } = await Location.requestPermissionsAsync();
@@ -71,7 +68,11 @@ export default function Home() {
   }, []);
 
   function handleNavigateToMapDetail(id: number) {
-    navigation.navigate('MapDetail', { bar_id: id })
+    api.get(`bars/${id}`).then(response => {
+      if (response && response.data) {
+        navigation.navigate('MapDetail', { barInfo: response.data, userInfo })
+      }
+    });
   }
 
   return (

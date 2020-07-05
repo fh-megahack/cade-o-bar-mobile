@@ -1,80 +1,85 @@
 import { StyleSheet } from 'react-native'
+import Constants from 'expo-constants'
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#37323e',
-        alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight,
+        backgroundColor: '#f3ca40',
     },
     header: {
-        flex: 1,
-        backgroundColor: '#F3CA40',
+        flexDirection: 'row',
+        paddingHorizontal: 0,
+        paddingVertical: 16,
         width: '100%',
-        height: '5%',
-        borderBottomRightRadius: 15,
-        borderBottomLeftRadius: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: "relative"
+    },
+    headerIcon: {
+        position: 'absolute',
+        left: 24
+    },
+    headerText: {
+        color: '#fff',
+        textAlign: 'center',
+        fontWeight: "bold",
+        fontFamily: 'OpenSans_600SemiBold',
+        fontSize: 22,
+    },
+    content: {
+        flex: 1,
+        width: '100%',
+        marginTop: 60,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        backgroundColor: '#37323e',
+        position: 'relative',
+        paddingTop: 120,
+        paddingBottom: 110,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 12,
-        },
-        shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-
-        elevation: 24,
-
-        zIndex: 4
-    },
-    topNav: {
-        flexDirection: 'row',
-        marginHorizontal: '5%',
-        alignItems: 'center',
-        marginTop: '10%',
-    },
-
-    textTop: {
-        marginLeft: '31%',
-        fontFamily: 'OpenSans_600SemiBold',
-        color: '#FFF',
-        fontSize: 20
-    },
-
-    barHeader: {
-        width: '100%',
-        alignItems: 'center',
-        top: 50,
-        shadowColor: "#000",
-        shadowOffset: {
-        width: 0,
-        height: 7,
+            height: 6,
         },
         shadowOpacity: 1.43,
         shadowRadius: 9.51,
+        elevation: 12,
+    },
 
-        elevation: 15,
-
-        zIndex: 3
-      },
-    
-    barHeaderContainer: {
-        width: 322,
-        height: 242,
+    barContainer: {
+        width: '100%',
+        position: 'absolute',
+        alignItems: 'center',
+        top: -50,
+    },
+    barCenter: {
+        width: '90%',
         backgroundColor: '#211D27',
         flexDirection: 'column',
         borderRadius: 25,
         overflow: 'hidden',
         alignItems: 'center',
-        position: 'relative'
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 1.43,
+        shadowRadius: 9.51,
+        elevation: 13,
+        paddingBottom: 16
     },
-
+    barContainerTop: {
+        width: '100%',
+        position: 'relative',
+    },
     heartView: {
         width: '90%',
         position: 'absolute',
-        zIndex: 1, 
+        zIndex: 1,
         top: '10%',
     },
-
     heartButton: {
         width: 35,
         marginLeft: '85%'
@@ -82,22 +87,37 @@ export default StyleSheet.create({
 
     barHeaderImage: {
         width: '100%',
-        height: '50%',
+        height: 150,
         resizeMode: 'cover',
     },
 
     barHeaderTitle: {
-        flex: 1,
         color: '#fff',
-        fontSize: 18,
+        fontSize: 24,
         fontFamily: 'Roboto_400Regular',
         fontWeight: 'bold',
-        marginTop: '5%',
+        marginTop: 5,
+    },
+    barBoard: {
+        flexDirection: 'row',
+        marginTop: 5,
+    },
+    barBoardColumn: {
+        flexDirection: 'column',
+        flex: 0.5
+    },
+    barBoardTitle: {
+        fontFamily: 'Roboto_300Light',
+        fontSize: 18,
+        color: 'white',
+        width: '100%',
+        textAlign: 'center',
+        marginTop: 5,
+        marginBottom: 5,
     },
 
     barInfos: {
-        width: '70%',
-        height: '20%',
+        width: '100%',
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -115,7 +135,7 @@ export default StyleSheet.create({
 
     infoText: {
         color: '#fff',
-        fontSize: 17,
+        fontSize: 18,
         fontFamily: 'Roboto_300Light',
     },
 
@@ -126,11 +146,14 @@ export default StyleSheet.create({
     },
 
     counterInfo: {
+        justifyContent: 'center',
+        alignItems: 'center',
         flexDirection: 'row',
+        width: '100%'
     },
 
     counterInfoText: {
-        fontSize: 23,
+        fontSize: 27,
         color: '#F08A4B',
         fontWeight: 'bold',
         marginLeft: '8%'
@@ -144,7 +167,6 @@ export default StyleSheet.create({
 
     barLinks: {
         width: '90%',
-        marginTop: '30%',
         paddingHorizontal: '6%',
     },
 
@@ -156,19 +178,22 @@ export default StyleSheet.create({
     barLink: {
         flexDirection: 'row',
         marginTop: '2%',
+        marginBottom: '2%',
     },
 
     barLocationText: {
         color: '#F6BB96',
         marginHorizontal: '3%',
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: 'Roboto_300Light',
+        fontSize: 16
     },
 
     barLinkText: {
         color: '#F6BB96',
         marginHorizontal: '3%',
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: 'Roboto_300Light',
         textDecorationLine: 'underline',
+        fontSize: 16
     },
 
     homeStars: {
@@ -177,44 +202,17 @@ export default StyleSheet.create({
         width: '100%'
     },
 
-    sectionTitle: {
-        width: '100%',
-        paddingHorizontal: 10,
-        fontFamily: 'Roboto_400Regular',
-        fontSize: 20,
-        marginBottom: 10,
+    homeStarsText: {
+        marginHorizontal: '3%',
         color: '#fff',
-        marginTop: '3%',
-    },
-
-    slider: {
-        marginBottom: 20,
-    },
-
-    item: {
-        flex: 1,
-        flexDirection: 'column'
-    },
-
-    itemTitle: {
-        fontFamily: 'OpenSans_600SemiBold',
-        textAlign: 'center',
-        color: '#fff',
-        fontSize: 10,
-    },
-
-    itemImg: {
-        height: 140,
-        width: 140,
-        borderRadius: 8,
-        marginRight: 8,
-        resizeMode: 'cover'
+        fontFamily: 'Roboto_500Medium',
+        fontSize: 18
     },
 
     favoritesTitle: {
-        width: '95%',
+        width: '100%',
         height: 50,
-        paddingHorizontal: '2%',
+        paddingHorizontal: 16,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
@@ -235,8 +233,7 @@ export default StyleSheet.create({
     },
 
     favorites: {
-        marginTop: '2%',
-        marginBottom: '15%'
+        marginTop: '2%'
     },
 
     favoritesCard: {
@@ -276,13 +273,6 @@ export default StyleSheet.create({
         color: '#fff',
         maxWidth: '95%',
     },
-
-    checkOut: {
-        width: '80%',
-        marginTop: '10%',
-        marginBottom: 30
-    },
-
     checkOutButton: {
         borderWidth: 1,
         borderColor: '#fff',
@@ -293,11 +283,48 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
     textButton: {
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 16
     },
-   
+    item: {
+        flex: 1,
+        flexDirection: 'column'
+    },
+    itemTitle: {
+        fontFamily: 'Roboto_400Regular',
+        textAlign: 'center',
+        fontSize: 13,
+        color: 'white'
+    },
+    itemImg: {
+        borderWidth: 2,
+        borderColor: '#eee',
+        height: 120,
+        width: 120,
+        borderRadius: 8,
+        marginRight: 8,
+        resizeMode: 'cover'
+    },
+    sectionTitle: {
+        paddingHorizontal: 6,
+        color: 'white',
+        fontFamily: 'Roboto_400Regular',
+        fontSize: 20,
+        marginBottom: 10,
+        marginTop: 16,
+    },
+    slider: {
+        marginBottom: 20,
+    },
+    spaceBottom: {
+        height: 80
+    },
+    footer: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+    }
 });
