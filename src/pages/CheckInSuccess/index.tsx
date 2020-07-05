@@ -71,34 +71,36 @@ export default function CheckInSuccess() {
 
   const { userInfo, barInfo } = route.params as Params
 
-  const checkinPoint = 50
+  // const checkinPoint = 50
   const [exitModalVisible, setExitModalVisible] = useState(false);
-  const [pointModalVisible, setPointModalVisible] = useState(false);
-  const [totalPoints, setTotalPoints] = useState(userInfo.points.total_points);
-  const [rescuePoints, setRescuePoints] = useState(userInfo.points.rescue_points);
+  // const [pointModalVisible, setPointModalVisible] = useState(false);
+  // const [totalPoints, setTotalPoints] = useState(userInfo.points.total_points);
+  // const [rescuePoints, setRescuePoints] = useState(userInfo.points.rescue_points);
 
-  useEffect(() => {
-    const options = {
-      "user_id": userInfo.id,
-      "total_points": userInfo.points.total_points + checkinPoint,
-      "rescue_points": userInfo.points.rescue_points + checkinPoint
-    }
-    api.put('points', options).then((result) => {
-      setTotalPoints(result.data.total_points)
-      setRescuePoints(result.data.rescue_points)
-      setPointModalVisible(true)
-      setTimeout(function () {
-        setPointModalVisible(false)
-      }, 3000)
-    })
-  }, [])
+  // useEffect(() => {
+  //   const options = {
+  //     "user_id": userInfo.id,
+  //     "total_points": userInfo.points.total_points + checkinPoint,
+  //     "rescue_points": userInfo.points.rescue_points + checkinPoint
+  //   }
+  //   api.put('points', options).then((result) => {
+  //     setTotalPoints(result.data.total_points)
+  //     setRescuePoints(result.data.rescue_points)
+  //     setPointModalVisible(true)
+  //     setTimeout(function () {
+  //       setPointModalVisible(false)
+  //     }, 3000)
+  //   })
+  // }, [])
 
   function handleNavigationBack() {
     setExitModalVisible(true)
   }
 
   function handleCancel() {
-    navigation.navigate('Detail', { userId: userInfo.id, barInfo })
+    setExitModalVisible(false)
+
+    navigation.navigate('Details', { userId: userInfo.id, barInfo })
   }
 
   function handleNavigateToRoullete() {
@@ -108,7 +110,7 @@ export default function CheckInSuccess() {
   return (
     <>
       <StatusBar barStyle="light-content" />
-      <Modal
+      {/* <Modal
         animationType="fade"
         transparent={true}
         visible={pointModalVisible}>
@@ -121,7 +123,7 @@ export default function CheckInSuccess() {
             <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{rescuePoints}</Text> pontos para resgate!</Text>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
       <Modal
         animationType="fade"
         transparent={true}

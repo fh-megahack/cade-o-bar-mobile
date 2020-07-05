@@ -83,5 +83,22 @@ export default StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center"
+  },
+  modalTextHead: {
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: "center",
+    fontFamily: 'OpenSans_600SemiBold',
+  },
+  modalTextPoint: {
+    fontFamily: 'OpenSans_600SemiBold',
+    fontSize: 16,
+    color: '#f08a4b'
+  },
+  modalButtons: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
 })
