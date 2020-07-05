@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   View,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import api from '../../services/api'
 
 // Icones
 import { Feather as Icon } from '@expo/vector-icons';
@@ -15,13 +16,25 @@ import { Feather as Icon } from '@expo/vector-icons';
 import styles from './styles'
 
 export default function Login() {
+  
+  const[email, setEmail] = useState('')
+  const[password, setPassword] = useState('')
 
   const navigation = useNavigation();
 
-  function handleNavigateToHome() {
-    navigation.navigate('Home')
-  }
+  function handleSubmit() {
 
+    api.post('/login', {
+      email: email,
+      password: password
+    })
+    .then(function (response) {
+      navigation.navigate('Home', {userInfo: response.data});
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   return (
     <View style={styles.container}>
@@ -32,6 +45,7 @@ export default function Login() {
         <View style={styles.action}>
           <Icon name="user" color="#FFF" size={20} style={{ padding: 10, marginTop: 20 }} />
           <TextInput
+            onChangeText={setEmail}
             placeholder="E-mail"
             placeholderTextColor="#fff"
             style={styles.textInput}
@@ -43,6 +57,7 @@ export default function Login() {
           <Icon name="lock" color="#FFF" size={20} style={{ padding: 10, marginTop: 20 }} />
           <TextInput
             secureTextEntry
+            onChangeText={setPassword}
             placeholder="Senha"
             placeholderTextColor="#fff"
             style={styles.textInput}
@@ -51,7 +66,7 @@ export default function Login() {
           />
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={handleNavigateToHome}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Text style={styles.buttonText}>
             Entrar
               </Text>
