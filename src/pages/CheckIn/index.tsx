@@ -26,6 +26,13 @@ interface User {
   uf: string
   password: string
   url_image: string
+  points: Point
+}
+
+interface Point {
+  user_id: number
+  total_points: number
+  rescue_points: number
 }
 
 interface Params {
@@ -72,13 +79,19 @@ export default function CheckIn() {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [loadVisible, setLoadVisible] = useState(false);
+  const [pointModalVisible, setPointModalVisible] = useState(false);
+
+
+  const [hasPermission, setHasPermission] = useState<any>(null);
+  const [scanned, setScanned] = useState(false);
+
+  const checkinPoint = 50
+  const [totalPoints, setTotalPoints] = useState(userInfo.points.total_points);
+  const [rescuePoints, setRescuePoints] = useState(userInfo.points.rescue_points);
 
   function handleNavigateToHome() {
     navigation.navigate('Home')
   }
-
-  const [hasPermission, setHasPermission] = useState<any>(null);
-  const [scanned, setScanned] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -103,10 +116,38 @@ export default function CheckIn() {
 
         const barInfo = barData.data
         const checkIn = await api.post('discovery', options)
+        console.log('-----------checkin', checkIn)
+        if (checkIn && checkIn.data && checkIn.data.hasOwnProperty('id')) {
 
-        navigation.navigate('CheckInSuccess', { userInfo, barInfo })
+          const options = {
+            user_id: userInfo.id,
+            total_points: totalPoints + checkinPoint,
+            rescue_points: rescuePoints + checkinPoint
+          }
+          console.log('-------- options', options)
+          api.put('points', options).then((result) => {
+            console.log('-------', result)
+            setLoadVisible(false)
+            setTotalPoints(result.data.total_points)
+            setRescuePoints(result.data.rescue_points)
+            setPointModalVisible(true)
+            setTimeout(function () {
+              setPointModalVisible(false)
+              navigation.navigate('CheckInSuccess', { userInfo, barInfo })
+            }, 5000)
+          }).catch((error) => {
+            console.log('-------', error)
 
+            setLoadVisible(false)
+            navigation.navigate('CheckInSuccess', { userInfo, barInfo })
+          })
+        } else {
+          setLoadVisible(false)
+          setModalVisible(true)
+          setScanned(false);
+        }
       } else {
+        setLoadVisible(false)
         setModalVisible(true)
         setScanned(false);
       }
@@ -141,6 +182,20 @@ export default function CheckIn() {
               >
                 <Text style={styles.textStyle}>Tentar Novamente</Text>
               </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={pointModalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalTextHead}>Parabéns!</Text>
+              <Text style={styles.modalText}>você ganhou mais <Text style={styles.modalTextPoint}>{checkinPoint}</Text> pontos!</Text>
+              <Text style={{ ...styles.modalText, marginBottom: 10 }}>Agora você tem:</Text>
+              <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{totalPoints}</Text> pontos no Rank</Text>
+              <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{rescuePoints}</Text> pontos para resgate!</Text>
             </View>
           </View>
         </Modal>
