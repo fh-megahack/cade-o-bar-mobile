@@ -5,9 +5,8 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'transparent',
+    backgroundColor: '#37323E',
     height: 70,
-
   },
   col1: {
     width: '42%',
