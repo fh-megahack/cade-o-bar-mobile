@@ -120,6 +120,7 @@ export default function Home() {
                     <Image style={styles.mapMarkerImage} source={{ uri: bar.url_image }} />
                     <Text style={styles.mapMarkerTitle}>{bar.name}</Text>
                   </View>
+                  <View style={styles.markerPoint} />
                 </Marker>
               ))}
             </MapView>

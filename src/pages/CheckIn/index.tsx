@@ -107,7 +107,6 @@ export default function CheckIn() {
     if (result && result.data) {
       const barData: any = await api.get(`bars/${result.data}`)
 
-      setLoadVisible(false)
       if (barData && barData.data) {
         const options = {
           "user_id": userInfo.id,
@@ -116,7 +115,6 @@ export default function CheckIn() {
 
         const barInfo = barData.data
         const checkIn = await api.post('discovery', options)
-        console.log('-----------checkin', checkIn)
         if (checkIn && checkIn.data && checkIn.data.hasOwnProperty('id')) {
 
           const options = {
@@ -124,19 +122,16 @@ export default function CheckIn() {
             total_points: totalPoints + checkinPoint,
             rescue_points: rescuePoints + checkinPoint
           }
-          console.log('-------- options', options)
           api.put('points', options).then((result) => {
-            console.log('-------', result)
             setLoadVisible(false)
-            setTotalPoints(result.data.total_points)
-            setRescuePoints(result.data.rescue_points)
-            setPointModalVisible(true)
+            setTimeout(() => {
+              setPointModalVisible(true)
+            }, 200)
             setTimeout(function () {
               setPointModalVisible(false)
               navigation.navigate('CheckInSuccess', { userInfo, barInfo })
-            }, 5000)
+            }, 3000)
           }).catch((error) => {
-            console.log('-------', error)
 
             setLoadVisible(false)
             navigation.navigate('CheckInSuccess', { userInfo, barInfo })
@@ -193,9 +188,6 @@ export default function CheckIn() {
             <View style={styles.modalView}>
               <Text style={styles.modalTextHead}>Parabéns!</Text>
               <Text style={styles.modalText}>você ganhou mais <Text style={styles.modalTextPoint}>{checkinPoint}</Text> pontos!</Text>
-              <Text style={{ ...styles.modalText, marginBottom: 10 }}>Agora você tem:</Text>
-              <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{totalPoints}</Text> pontos no Rank</Text>
-              <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{rescuePoints}</Text> pontos para resgate!</Text>
             </View>
           </View>
         </Modal>
@@ -224,7 +216,7 @@ export default function CheckIn() {
             <AntDesign name="arrowleft" size={24} color="#fff" />
           </TouchableOpacity>
           <View>
-            <Text style={styles.welcomeText}>Certo <Text style={styles.welcomeTextName}>Pedro</Text>,</Text>
+            <Text style={styles.welcomeText}>Certo <Text style={styles.welcomeTextName}>{userInfo.name}</Text>,</Text>
             <Text style={styles.welcomeText}>Escaneie o Código QR e explore esse ambiente incrível!</Text>
           </View>
         </View>

@@ -48,7 +48,20 @@ export default StyleSheet.create({
 
   mapMarker: {
     width: 90,
-    height: 65
+    height: 65,
+    position: 'relative'
+  },
+
+  markerPoint: {
+    width: 0,
+    height: 0,
+    borderColor: 'transparent',
+    borderWidth: 5,
+    borderTopColor: '#37323E',
+    borderTopWidth: 8,
+    position: 'absolute',
+    bottom: 0,
+    left: 40
   },
 
   mapMarkerContainer: {
