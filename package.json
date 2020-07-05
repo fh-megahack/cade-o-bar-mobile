@@ -35,7 +35,6 @@
     "react-native-svg-transformer": "^0.14.3",
     "react-native-web": "~0.11.7",
     "styled-components": "^5.1.1",
-    "expo-location": "~8.2.1",
     "lottie-react-native": "~2.6.1"
   },
   "devDependencies": {

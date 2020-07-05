@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { StatusBar, Text, View, TouchableOpacity, Modal, Alert, StyleSheet, TouchableHighlight } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { AntDesign } from '@expo/vector-icons';
-import LottieView from "lottie-react-native";
+// import LottieView from "lottie-react-native";
 
 import { YellowBox } from 'react-native';
 
@@ -119,7 +119,7 @@ export default function CheckIn() {
           </View>
         </Modal>
 
-        <Modal
+        {/* <Modal
           animationType="fade"
           transparent={true}
           visible={loadVisible}
@@ -136,7 +136,7 @@ export default function CheckIn() {
               source={require('./../../assets/lottie/lottie-beer.json')}
             />
           </View>
-        </Modal>
+        </Modal> */}
 
         <View style={styles.header}>
           <TouchableOpacity onPress={handleNavigateToHome} >
