@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { StatusBar, View, Image, Text, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import api from '../../services/api';
@@ -30,10 +30,20 @@ interface User {
   url_image: string
 }
 
+interface Params {
+  userInfo: User
+}
+
 export default function Home() {
   const [bars, setBars] = useState<Bar[]>([]);
   const [user, setUser] = useState<User>({} as User);
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
+  
+  const route = useRoute()
+  const navigation = useNavigation()
+
+  const { userInfo } = route.params as Params
+  console.log(userInfo)
 
   useEffect(() => {
     async function loadPosition() {
@@ -55,18 +65,10 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    api.get('users/1').then(response => {
-      setUser(response.data);
-    })
-  }, []);
-
-  useEffect(() => {
     api.get('bars').then(response => {
       setBars(response.data);
     })
   }, []);
-
-  const navigation = useNavigation();
 
   function handleNavigateToMapDetail(id: number) {
     navigation.navigate('MapDetail', { bar_id: id })
@@ -78,9 +80,9 @@ export default function Home() {
       <View style={styles.container}>
 
         <View style={styles.header}>
-          <Image style={styles.profileImage} source={{ uri: user.url_image }} />
+          <Image style={styles.profileImage} source={{ uri: userInfo.url_image }} />
           <View>
-            <Text style={styles.welcomeText}>Olá <Text style={styles.welcomeTextName}>{user.name}</Text>,</Text>
+            <Text style={styles.welcomeText}>Olá <Text style={styles.welcomeTextName}>{userInfo.name}</Text>,</Text>
             <Text style={styles.welcomeText}>Que tal descobrir novas experiências hoje? </Text>
           </View>
         </View>
@@ -123,7 +125,7 @@ export default function Home() {
           )}
         </View>
 
-        <BottomBar userInfo={user} />
+        <BottomBar userInfo={userInfo} />
 
       </View>
     </>
