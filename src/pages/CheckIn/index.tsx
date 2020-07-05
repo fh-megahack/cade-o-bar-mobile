@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { StatusBar, Text, View, TouchableOpacity, Modal, Alert, StyleSheet, TouchableHighlight } from 'react-native';
+import { StatusBar, Text, View, TouchableOpacity, Modal, Alert, TouchableHighlight } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { AntDesign } from '@expo/vector-icons';
-// import LottieView from "lottie-react-native";
+import LottieView from "lottie-react-native";
 
 import { YellowBox } from 'react-native';
 
@@ -28,23 +28,40 @@ interface User {
   url_image: string
 }
 
-interface Point {
-  position: number
-  total_points: number
-  rescue_points: number
-}
-
-interface Discovery {
-  id: number
-  user_id: number
-  bar_id: number
-  date: string
-  bar_name: string
-  bar_image: string
-}
-
 interface Params {
   userInfo: User
+}
+
+interface ProductDescription {
+  name: string
+  url_image: string
+}
+
+interface RatingFull {
+  id: number
+  bar_id: number
+  user_id: number
+  rating: number
+  comment: string
+  user_name: string
+  user_image: string
+}
+
+interface Bar {
+  id: number
+  name: string
+  latitude: number
+  longitude: number
+  street: string
+  address_number: number
+  neighborhood: string
+  uf: string
+  city: string
+  website: string
+  url_image: string
+  phone: number
+  products: ProductDescription[]
+  ratings: RatingFull[]
 }
 
 export default function CheckIn() {
@@ -75,11 +92,20 @@ export default function CheckIn() {
     setScanned(true);
 
     if (result && result.data) {
-      const barInfo = await api.get(`bars/${result.data}`)
+      const barData: any = await api.get(`bars/${result.data}`)
 
       setLoadVisible(false)
-      if (barInfo) {
+      if (barData && barData.data) {
+        const options = {
+          "user_id": userInfo.id,
+          "bar_id": barData.data.id
+        }
+
+        const barInfo = barData.data
+        const checkIn = await api.post('discovery', options)
+
         navigation.navigate('CheckInSuccess', { userInfo, barInfo })
+
       } else {
         setModalVisible(true)
         setScanned(false);
@@ -119,7 +145,7 @@ export default function CheckIn() {
           </View>
         </Modal>
 
-        {/* <Modal
+        <Modal
           animationType="fade"
           transparent={true}
           visible={loadVisible}
@@ -136,7 +162,7 @@ export default function CheckIn() {
               source={require('./../../assets/lottie/lottie-beer.json')}
             />
           </View>
-        </Modal> */}
+        </Modal>
 
         <View style={styles.header}>
           <TouchableOpacity onPress={handleNavigateToHome} >
@@ -151,7 +177,7 @@ export default function CheckIn() {
 
         <View style={styles.mapContainer}>
           <BarCodeScanner
-            onBarCodeScanned={scanned ? undefined : handleBarCodeScanner}
+            onBarCodeScanned={scanned ? () => { } : handleBarCodeScanner}
             style={styles.scanner}
           />
         </View>

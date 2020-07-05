@@ -1,8 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler'
-import { SvgUri } from 'react-native-svg'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { AntDesign as Icon } from '@expo/vector-icons';
 import api from '../../services/api';
