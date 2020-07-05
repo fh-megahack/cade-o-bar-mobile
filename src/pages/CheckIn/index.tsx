@@ -107,7 +107,6 @@ export default function CheckIn() {
     if (result && result.data) {
       const barData: any = await api.get(`bars/${result.data}`)
 
-      setLoadVisible(false)
       if (barData && barData.data) {
         const options = {
           "user_id": userInfo.id,
@@ -125,13 +124,13 @@ export default function CheckIn() {
           }
           api.put('points', options).then((result) => {
             setLoadVisible(false)
-            setTotalPoints(result.data.total_points)
-            setRescuePoints(result.data.rescue_points)
-            setPointModalVisible(true)
+            setTimeout(() => {
+              setPointModalVisible(true)
+            }, 200)
             setTimeout(function () {
               setPointModalVisible(false)
               navigation.navigate('CheckInSuccess', { userInfo, barInfo })
-            }, 5000)
+            }, 3000)
           }).catch((error) => {
 
             setLoadVisible(false)
@@ -189,9 +188,6 @@ export default function CheckIn() {
             <View style={styles.modalView}>
               <Text style={styles.modalTextHead}>Parabéns!</Text>
               <Text style={styles.modalText}>você ganhou mais <Text style={styles.modalTextPoint}>{checkinPoint}</Text> pontos!</Text>
-              <Text style={{ ...styles.modalText, marginBottom: 10 }}>Agora você tem:</Text>
-              <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{totalPoints}</Text> pontos no Rank</Text>
-              <Text style={styles.modalText}><Text style={{ ...styles.modalTextPoint, color: '#577590' }}>{rescuePoints}</Text> pontos para resgate!</Text>
             </View>
           </View>
         </Modal>
