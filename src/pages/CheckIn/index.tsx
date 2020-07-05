@@ -116,7 +116,6 @@ export default function CheckIn() {
 
         const barInfo = barData.data
         const checkIn = await api.post('discovery', options)
-        console.log('-----------checkin', checkIn)
         if (checkIn && checkIn.data && checkIn.data.hasOwnProperty('id')) {
 
           const options = {
@@ -124,9 +123,7 @@ export default function CheckIn() {
             total_points: totalPoints + checkinPoint,
             rescue_points: rescuePoints + checkinPoint
           }
-          console.log('-------- options', options)
           api.put('points', options).then((result) => {
-            console.log('-------', result)
             setLoadVisible(false)
             setTotalPoints(result.data.total_points)
             setRescuePoints(result.data.rescue_points)
@@ -136,7 +133,6 @@ export default function CheckIn() {
               navigation.navigate('CheckInSuccess', { userInfo, barInfo })
             }, 5000)
           }).catch((error) => {
-            console.log('-------', error)
 
             setLoadVisible(false)
             navigation.navigate('CheckInSuccess', { userInfo, barInfo })
@@ -224,7 +220,7 @@ export default function CheckIn() {
             <AntDesign name="arrowleft" size={24} color="#fff" />
           </TouchableOpacity>
           <View>
-            <Text style={styles.welcomeText}>Certo <Text style={styles.welcomeTextName}>Pedro</Text>,</Text>
+            <Text style={styles.welcomeText}>Certo <Text style={styles.welcomeTextName}>{userInfo.name}</Text>,</Text>
             <Text style={styles.welcomeText}>Escaneie o Código QR e explore esse ambiente incrível!</Text>
           </View>
         </View>
