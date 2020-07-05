@@ -1,15 +1,38 @@
 import React from 'react';
 import styles from './styles'
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { Text, View, TextInput, TouchableOpacity, YellowBox } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { AirbnbRating } from 'react-native-ratings';
 import { Feather as Icon } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function CheckOut() {
+YellowBox.ignoreWarnings([
+  'Animated: `useNativeDriver` was not specified.',
+]);
 
-  const navigation = useNavigation();
+interface CheckOut {
+  id: number;
+  bar_id: number;
+  user_id: number;
+  rating: number;
+  comment: string;
+}
+
+interface Params {
+  barInfo: CheckOut
+}
+
+export default function CheckOut() {
+  const route = useRoute()
+  const navigation = useNavigation()
+
+  const { barInfo } = route.params as Params
+
+
+  function ratingCompleted(rating: number) {
+    console.log("Rating is: " + rating)
+  }
 
   function handleNavigateToHome() {
     navigation.navigate('Home')
@@ -40,7 +63,9 @@ export default function CheckOut() {
         <Text style={styles.textDescription}>Antes de fazer o Check-out, que tal avaliar a sua experiencia?</Text>
         
         <View style={{marginTop: '2%'}}>
-          <AirbnbRating />
+          <AirbnbRating 
+            onFinishRating={ratingCompleted}
+          />
         </View>
 
         <View style={styles.action}>
