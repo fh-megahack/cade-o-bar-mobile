@@ -53,7 +53,7 @@ Exemplo: `baseURL: 'http://192.168.1.113:3333`
 
 ## TECNOLOGIAS USADAS
 
-### O projeto foi foi desenvolvido com base nas seguintes tecnoogias:
+### O projeto foi desenvolvido com base nas seguintes tecnoogias:
 
 - [Typescript](https://www.typescriptlang.org/)
 - [React Native](https://reactnative.dev/)
