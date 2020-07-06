@@ -34,6 +34,11 @@ npm start
 ```
 - #### Obs: Para que este projeto funcione sem erros é necessário estar com o servidor rodando;
 
+- #### Obs2: É preciso atualizar a configuração de `BaseUrl` no arquivo `./src/services/api.ts` conforme a URL de conexão do se expo, considerando a porta que roda o servidor (`3333`);
+Exemplo: `baseURL: 'http://192.168.1.113:3333`
+
+<img src="https://github.com/fh-megahack/cade-o-bar-mobile/blob/master/public/Screen%20Shot%202020-07-05%20at%2022.24.34.png" width="400px"/>
+
 - ##### Link: do servidor: [Ir para o repositório do Github](https://github.com/fh-megahack/server-cade-o-bar)
 
     <img src="/public/demo/viewDemo.png" width="1000px;" />
